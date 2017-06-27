@@ -455,7 +455,7 @@
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">UNIX timestamp</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
@@ -479,7 +479,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
 <li><strong>$datestr</strong> (<em>string</em>) &#8211; String de data</li>
-<li><strong>$time</strong> (<em>int</em>) &#8211; UNIX timestamp</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
 </ul>
 </td>
 </tr>
@@ -511,7 +511,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
 <li><strong>$fmt</strong> (<em>string</em>) &#8211; Formato de data</li>
-<li><strong>$time</strong> (<em>int</em>) &#8211; UNIX timestamp</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
 </ul>
 </td>
 </tr>
@@ -603,11 +603,11 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$time</strong> (<em>int</em>) &#8211; UNIX timestamp</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">UNIX timestamp</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
@@ -630,13 +630,13 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$time</strong> (<em>int</em>) &#8211; UNIX timestamp</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
 <li><strong>$timezone</strong> (<em>string</em>) &#8211; Fuso horário</li>
 <li><strong>$dst</strong> (<em>bool</em>) &#8211; Se DST está ativo</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">UNIX timestamp</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
@@ -670,7 +670,7 @@
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">UNIX timestamp</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Timestamp UNIX</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
@@ -693,7 +693,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$time</strong> (<em>int</em>) &#8211; UNIX timestamp</li>
+<li><strong>$time</strong> (<em>int</em>) &#8211; Timestamp UNIX</li>
 <li><strong>$seconds</strong> (<em>bool</em>) &#8211; Se exibe os segundos</li>
 <li><strong>$fmt</strong> (<em>string</em>) &#8211; Formato (us ou euro)</li>
 </ul>
@@ -759,12 +759,12 @@ Se apenas o timestamp for enviado, ele retornará o tempo sem segundos formatado
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$bad_date</strong> (<em>int</em>) &#8211; The terribly formatted date-like string</li>
-<li><strong>$format</strong> (<em>string</em>) &#8211; Date format to return (same as PHP&#8217;s <tt class="docutils literal"><span class="pre">date()</span></tt> function)</li>
+<li><strong>$bad_date</strong> (<em>int</em>) &#8211; Uma string de data terrivelmente formatada</li>
+<li><strong>$format</strong> (<em>string</em>) &#8211; Formato de data a retornar (igual à função <tt class="docutils literal"><span class="pre">date()</span></tt> do PHP)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Formatted date</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Data formatada</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -772,18 +772,15 @@ Se apenas o timestamp for enviado, ele retornará o tempo sem segundos formatado
 </tr>
 </tbody>
 </table>
-<p>This function can take a number poorly-formed date formats and convert
-them into something useful. It also accepts well-formed dates.</p>
-<p>The function will return a UNIX timestamp by default. You can, optionally,
-pass a format string (the same type as the PHP <tt class="docutils literal"><span class="pre">date()</span></tt> function accepts)
-as the second parameter.</p>
+<p>Esta função pode ter um número de formatos de data mal formados e convertê-los em algo útil. Também aceita datas bem formadas.</p>
+<p>A função retornará um timestamp UNIX por padrão. Você pode, opcionalmente, passar um formato em string (o mesmo tipo que a função <tt class="docutils literal"><span class="pre">date()</span></tt> do PHP aceita) como o segundo parâmetro.</p>
 <p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$bad_date</span> <span class="o">=</span> <span class="s1">&#39;199605&#39;</span><span class="p">;</span>
-<span class="c1">// Should Produce: 1996-05-01</span>
+<span class="c1">// Deve Produzir: 1996-05-01</span>
 <span class="nv">$better_date</span> <span class="o">=</span> <span class="nx">nice_date</span><span class="p">(</span><span class="nv">$bad_date</span><span class="p">,</span> <span class="s1">&#39;Y-m-d&#39;</span><span class="p">);</span>
 
 <span class="nv">$bad_date</span> <span class="o">=</span> <span class="s1">&#39;9-11-2001&#39;</span><span class="p">;</span>
-<span class="c1">// Should Produce: 2001-09-11</span>
+<span class="c1">// Deve Produzir: 2001-09-11</span>
 <span class="nv">$better_date</span> <span class="o">=</span> <span class="nx">nice_date</span><span class="p">(</span><span class="nv">$bad_date</span><span class="p">,</span> <span class="s1">&#39;Y-m-d&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -797,13 +794,13 @@ as the second parameter.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$seconds</strong> (<em>int</em>) &#8211; Number of seconds</li>
-<li><strong>$time</strong> (<em>string</em>) &#8211; UNIX timestamp</li>
-<li><strong>$units</strong> (<em>int</em>) &#8211; Number of time units to display</li>
+<li><strong>$seconds</strong> (<em>int</em>) &#8211; Número de segundos</li>
+<li><strong>$time</strong> (<em>string</em>) &#8211; Timestamp UNIX</li>
+<li><strong>$units</strong> (<em>int</em>) &#8211; Número de unidades de tempo para exibir</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Formatted time difference</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Diferença de tempo formatada</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -811,17 +808,14 @@ as the second parameter.</p>
 </tr>
 </tbody>
 </table>
-<p>Formats a UNIX timestamp so that is appears similar to this:</p>
+<p>Formata um timestamp UNIX para que seja semelhante a este:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="mi">1</span> <span class="nx">Year</span><span class="p">,</span> <span class="mi">10</span> <span class="nx">Months</span><span class="p">,</span> <span class="mi">2</span> <span class="nx">Weeks</span><span class="p">,</span> <span class="mi">5</span> <span class="nx">Days</span><span class="p">,</span> <span class="mi">10</span> <span class="nx">Hours</span><span class="p">,</span> <span class="mi">16</span> <span class="nx">Minutes</span>
 </pre></div>
 </div>
-<p>The first parameter must contain a UNIX timestamp.
-The second parameter must contain a timestamp that is greater that the
-first timestamp.
-The thirdparameter is optional and limits the number of time units to display.</p>
-<p>If the second parameter empty, the current time will be used.</p>
-<p>The most common purpose for this function is to show how much time has
-elapsed from some point in time in the past to now.</p>
+<p>O primeiro parâmetro deve conter um timestamp UNIX. O segundo parâmetro deve conter um timestamp que seja maior que o primeiro timestamp.
+O terceiro parâmetro é opcional e limita o número de unidades de tempo a serem exibidas.</p>
+<p>Se o segundo parâmetro estiver vazio, o tempo atual será usado.</p>
+<p>O propósito mais comum para esta função é mostrar quanto tempo decorrido de algum momento no passado até agora.</p>
 <p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$post_date</span> <span class="o">=</span> <span class="s1">&#39;1079621429&#39;</span><span class="p">;</span>
 <span class="nv">$now</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
@@ -831,8 +825,7 @@ elapsed from some point in time in the past to now.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">nota</p>
-<p class="last">The text generated by this function is found in the following language
-file: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
+<p class="last">O texto gerado por esta função é encontrado no seguinte arquivo de idioma: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
 </div>
 </dd></dl>
 
@@ -844,12 +837,12 @@ file: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$month</strong> (<em>int</em>) &#8211; a numeric month</li>
-<li><strong>$year</strong> (<em>int</em>) &#8211; a numeric year</li>
+<li><strong>$month</strong> (<em>int</em>) &#8211; Um mês numérico</li>
+<li><strong>$year</strong> (<em>int</em>) &#8211; Um ano numérico</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Count of days in the specified month</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Contagem de dias no mês especificado</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
@@ -857,17 +850,15 @@ file: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
 </tr>
 </tbody>
 </table>
-<p>Returns the number of days in a given month/year. Takes leap years into
-account.</p>
+<p>Retorna o número de dias em um determinado mês/ano. Tem em conta os anos bissextos.</p>
 <p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">days_in_month</span><span class="p">(</span><span class="mo">06</span><span class="p">,</span> <span class="mi">2005</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>If the second parameter is empty, the current year will be used.</p>
+<p>Se o segundo parâmetro estiver vazio, o ano atual será usado.</p>
 <div class="admonition note">
 <p class="first admonition-title">nota</p>
-<p class="last">This function will alias the native <tt class="docutils literal"><span class="pre">cal_days_in_month()</span></tt>, if
-it is available.</p>
+<p class="last">Esta função é um alias para o nativo <tt class="docutils literal"><span class="pre">cal_days_in_month()</span></tt>, se estiver disponível.</p>
 </div>
 </dd></dl>
 
@@ -879,14 +870,14 @@ it is available.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$unix_start</strong> (<em>int</em>) &#8211; UNIX timestamp of the range start date</li>
-<li><strong>$mixed</strong> (<em>int</em>) &#8211; UNIX timestamp of the range end date or interval in days</li>
-<li><strong>$is_unix</strong> (<em>bool</em>) &#8211; set to FALSE if $mixed is not a timestamp</li>
-<li><strong>$format</strong> (<em>string</em>) &#8211; Output date format, same as in <tt class="docutils literal"><span class="pre">date()</span></tt></li>
+<li><strong>$unix_start</strong> (<em>int</em>) &#8211; Timestamp UNIX da data de início do intervalo</li>
+<li><strong>$mixed</strong> (<em>int</em>) &#8211; Timestamp UNIX da data final do intervalo ou intervalo em dias</li>
+<li><strong>$is_unix</strong> (<em>bool</em>) &#8211; Configurado para FALSE se $mixed não for um timestamp</li>
+<li><strong>$format</strong> (<em>string</em>) &#8211; Formato da data de saída, igual ao <tt class="docutils literal"><span class="pre">date()</span></tt></li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">An array of dates</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Um array de datas</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
@@ -894,10 +885,10 @@ it is available.</p>
 </tr>
 </tbody>
 </table>
-<p>Returns a list of dates within a specified period.</p>
+<p>Retorna uma lista de datas dentro de um período especificado.</p>
 <p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$range</span> <span class="o">=</span> <span class="nx">date_range</span><span class="p">(</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-01-15&#39;</span><span class="p">);</span>
-<span class="k">echo</span> <span class="s2">&quot;First 15 days of 2012:&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;Primeiros 15 dias de 2012:&quot;</span><span class="p">;</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$range</span> <span class="k">as</span> <span class="nv">$date</span><span class="p">)</span>
 <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$date</span><span class="o">.</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
@@ -914,11 +905,11 @@ it is available.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$tz</strong> (<em>string</em>) &#8211; A numeric timezone</li>
+<li><strong>$tz</strong> (<em>string</em>) &#8211; Um fuso horário numérico</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Hour difference from UTC</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Diferença horária de UTC</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">int</p>
@@ -926,14 +917,12 @@ it is available.</p>
 </tr>
 </tbody>
 </table>
-<p>Takes a timezone reference (for a list of valid timezones, see the
-&#8220;Timezone Reference&#8221; below) and returns the number of hours offset from
-UTC.</p>
+<p>Toma uma referência de fuso horário (para uma lista de fusos horários válidos, veja a "Referência do fuso horário" abaixo) e retorna o número de horas de deslocamento de UTC.</p>
 <p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">timezones</span><span class="p">(</span><span class="s1">&#39;UM5&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This function is useful when used with <a class="reference internal" href="#timezone_menu" title="timezone_menu"><tt class="xref php php-func docutils literal"><span class="pre">timezone_menu()</span></tt></a>.</p>
+<p>Esta função é útil quando usada com <a class="reference internal" href="#timezone_menu" title="timezone_menu"><tt class="xref php php-func docutils literal"><span class="pre">timezone_menu()</span></tt></a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -944,10 +933,10 @@ UTC.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$default</strong> (<em>string</em>) &#8211; Timezone</li>
-<li><strong>$class</strong> (<em>string</em>) &#8211; Class name</li>
-<li><strong>$name</strong> (<em>string</em>) &#8211; Menu name</li>
-<li><strong>$attributes</strong> (<em>mixed</em>) &#8211; HTML attributes</li>
+<li><strong>$default</strong> (<em>string</em>) &#8211; Fuso horário</li>
+<li><strong>$class</strong> (<em>string</em>) &#8211; Nome da classe</li>
+<li><strong>$name</strong> (<em>string</em>) &#8211; Nome do menu</li>
+<li><strong>$attributes</strong> (<em>mixed</em>) &#8211; Atributos HTML</li>
 </ul>
 </td>
 </tr>
@@ -959,7 +948,7 @@ UTC.</p>
 </tr>
 </tbody>
 </table>
-<p>Generates a pull-down menu of timezones, like this one:</p>
+<p>Gera um menu suspenso de fuso horário, como este:</p>
 <form action="#">
         <select name="timezones">
                 <option value='UM12'>(UTC -12:00) Baker/Howland Island</option>
@@ -1003,20 +992,18 @@ UTC.</p>
                 <option value='UP13'>(UTC +13:00) Phoenix Islands Time, Tonga</option>
                 <option value='UP14'>(UTC +14:00) Line Islands</option>
         </select>
-</form><p>This menu is useful if you run a membership site in which your users are
-allowed to set their local timezone value.</p>
-<p>The first parameter lets you set the &#8220;selected&#8221; state of the menu. For
-example, to set Pacific time as the default you will do this:</p>
+</form>
+<p>Este menu é útil se você executar um site de associação no qual seus usuários possam definir seu valor de fuso horário local.</p>
+<p>O primeiro parâmetro permite definir o estado "selecionado" do menu. Por exemplo, para configurar o horário do Pacífico como o padrão você fará isso:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">timezone_menu</span><span class="p">(</span><span class="s1">&#39;UM8&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Please see the timezone reference below to see the values of this menu.</p>
-<p>The second parameter lets you set a CSS class name for the menu.</p>
-<p>The fourth parameter lets you set one or more attributes on the generated select tag.</p>
+<p>Consulte a referência do fuso horário abaixo para ver os valores deste menu.</p>
+<p>O segundo parâmetro permite que você defina um nome de classe CSS para o menu.</p>
+<p>O quarto parâmetro permite definir um ou mais atributos na tag de seleção gerada.</p>
 <div class="admonition note">
 <p class="first admonition-title">nota</p>
-<p class="last">The text contained in the menu is found in the following
-language file: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
+<p class="last">O texto contido no menu é encontrado no seguinte arquivo de idioma: <cite>language/&lt;your_lang&gt;/date_lang.php</cite></p>
 </div>
 </dd></dl>
 
