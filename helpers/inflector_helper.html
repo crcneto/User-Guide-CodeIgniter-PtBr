@@ -425,8 +425,7 @@
 
   <div class="section" id="inflector-helper">
 <h1>Auxiliar de Flexão Gramatical<a class="headerlink" href="#inflector-helper" title="Permalink to this headline">¶</a></h1>
-<p>The Auxiliar de Flexão Gramatical file contains functions that permits you to change
-<strong>English</strong> words to plural, singular, camel case, etc.</p>
+<p>O arquivo Auxiliar de Flexão Gramatical contém funções que permitem alterar palavras em <strong>Inglês</strong> para plural, singular, camel case, etc</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#loading-this-helper" id="id1">Carregando este Auxiliar</a></li>
@@ -451,11 +450,11 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A singular word</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Uma palavra no singular</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -463,8 +462,8 @@
 </tr>
 </tbody>
 </table>
-<p>Changes a plural word to singular. Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">singular</span><span class="p">(</span><span class="s1">&#39;dogs&#39;</span><span class="p">);</span> <span class="c1">// Prints &#39;dog&#39;</span>
+<p>Muda uma palavra no plural para o singular. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">singular</span><span class="p">(</span><span class="s1">&#39;dogs&#39;</span><span class="p">);</span> <span class="c1">// Imprime &#39;dog&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -477,11 +476,11 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A plural word</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Uma palavra no plural</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -489,8 +488,8 @@
 </tr>
 </tbody>
 </table>
-<p>Changes a singular word to plural. Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">plural</span><span class="p">(</span><span class="s1">&#39;dog&#39;</span><span class="p">);</span> <span class="c1">// Prints &#39;dogs&#39;</span>
+<p>Muda uma palavra no singular para o plural. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">plural</span><span class="p">(</span><span class="s1">&#39;dog&#39;</span><span class="p">);</span> <span class="c1">// Imprime &#39;dogs&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -503,7 +502,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
@@ -515,9 +514,8 @@
 </tr>
 </tbody>
 </table>
-<p>Changes a string of words separated by spaces or underscores to camel
-case. Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">camelize</span><span class="p">(</span><span class="s1">&#39;my_dog_spot&#39;</span><span class="p">);</span> <span class="c1">// Prints &#39;myDogSpot&#39;</span>
+<p>Muda uma string de palavras separadas por espaços ou sublinhados no caso do camel case. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">camelize</span><span class="p">(</span><span class="s1">&#39;my_dog_spot&#39;</span><span class="p">);</span> <span class="c1">// Imprime &#39;myDogSpot&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -530,11 +528,11 @@ case. Example:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">String containing underscores instead of spaces</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">String contendo sublinhados em vez de espaços</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -542,9 +540,8 @@ case. Example:</p>
 </tr>
 </tbody>
 </table>
-<p>Takes multiple words separated by spaces and underscores them.
-Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">underscore</span><span class="p">(</span><span class="s1">&#39;my dog spot&#39;</span><span class="p">);</span> <span class="c1">// Prints &#39;my_dog_spot&#39;</span>
+<p>Pega várias palavras separadas por espaços e as sublinha. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">underscore</span><span class="p">(</span><span class="s1">&#39;my dog spot&#39;</span><span class="p">);</span> <span class="c1">// Imprime &#39;my_dog_spot&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -557,12 +554,12 @@ Example:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$separator</strong> (<em>string</em>) &#8211; Input separator</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
+<li><strong>$separator</strong> (<em>string</em>) &#8211; Separador de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Humanized string</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">String humanizado</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -570,14 +567,13 @@ Example:</p>
 </tr>
 </tbody>
 </table>
-<p>Takes multiple words separated by underscores and adds spaces between
-them. Each word is capitalized.</p>
-<p>Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">humanize</span><span class="p">(</span><span class="s1">&#39;my_dog_spot&#39;</span><span class="p">);</span> <span class="c1">// Prints &#39;My Dog Spot&#39;</span>
+<p>Pega várias palavras separadas por sublinhados e acrescenta espaços entre eles. A primeira letra de cada palavra é escrita em letra maiúscula.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">humanize</span><span class="p">(</span><span class="s1">&#39;my_dog_spot&#39;</span><span class="p">);</span> <span class="c1">// Imprime &#39;My Dog Spot&#39;</span>
 </pre></div>
 </div>
-<p>To use dashes instead of underscores:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">humanize</span><span class="p">(</span><span class="s1">&#39;my-dog-spot&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">);</span> <span class="c1">// Prints &#39;My Dog Spot&#39;</span>
+<p>Para usar traços em vez de sublinhados:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nx">humanize</span><span class="p">(</span><span class="s1">&#39;my-dog-spot&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">);</span> <span class="c1">// Imprime &#39;My Dog Spot&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -590,11 +586,11 @@ them. Each word is capitalized.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$word</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$word</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">TRUE if the word is countable or FALSE if not</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">TRUE se a palavra for contábil ou FALSE se não</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">bool</p>
@@ -602,8 +598,8 @@ them. Each word is capitalized.</p>
 </tr>
 </tbody>
 </table>
-<p>Checks if the given word has a plural version. Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nx">is_countable</span><span class="p">(</span><span class="s1">&#39;equipment&#39;</span><span class="p">);</span> <span class="c1">// Returns FALSE</span>
+<p>CVerifica se a palavra dada tem uma versão plural. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nx">is_countable</span><span class="p">(</span><span class="s1">&#39;equipment&#39;</span><span class="p">);</span> <span class="c1">// Retorna FALSE</span>
 </pre></div>
 </div>
 </dd></dl>
