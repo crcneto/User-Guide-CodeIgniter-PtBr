@@ -425,7 +425,7 @@
 
   <div class="section" id="security-helper">
 <h1>Auxiliar de Segurança<a class="headerlink" href="#security-helper" title="Permalink to this headline">¶</a></h1>
-<p>The Auxiliar de Segurança file contains security related functions.</p>
+<p>O arquivo auxiliar de segurança contém funções relacionadas à segurança.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#loading-this-helper" id="id1">Carregando este Auxiliar</a></li>
@@ -450,8 +450,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input data</li>
-<li><strong>$is_image</strong> (<em>bool</em>) &#8211; Whether we&#8217;re dealing with an image</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; Entrada de dado</li>
+<li><strong>$is_image</strong> (<em>bool</em>) &#8211; Se estamos lidando com uma imagem</li>
 </ul>
 </td>
 </tr>
@@ -463,9 +463,9 @@
 </tr>
 </tbody>
 </table>
-<p>Provides Cross Site Script Hack filtering.</p>
-<p>This function is an alias for <tt class="docutils literal"><span class="pre">CI_Input::xss_clean()</span></tt>. For more info,
-please see the <a class="reference internal" href="../libraries/input.html"><em>Input Library</em></a> documentation.</p>
+<p>Fornece uma filtragem Cross Site Script Hack.</p>
+<p>Esta função é um alias para <tt class="docutils literal"><span class="pre">CI_Input::xss_clean()</span></tt>.
+Para mais informações, consulte a documentação da <a class="reference internal" href="../libraries/input.html"><em>Biblioteca de entrada</em></a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -476,11 +476,11 @@ please see the <a class="reference internal" href="../libraries/input.html"><em>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filename</strong> (<em>string</em>) &#8211; Filename</li>
+<li><strong>$filename</strong> (<em>string</em>) &#8211; Nome do arquivo</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Sanitized file name</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Nome do arquivo sanitizado</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -488,10 +488,9 @@ please see the <a class="reference internal" href="../libraries/input.html"><em>
 </tr>
 </tbody>
 </table>
-<p>Provides protection against directory traversal.</p>
-<p>This function is an alias for <tt class="docutils literal"><span class="pre">CI_Security::sanitize_filename()</span></tt>.
-For more info, please see the <a class="reference internal" href="../libraries/security.html"><em>Security Library</em></a>
-documentation.</p>
+<p>Fornece proteção contra o cruzamento de diretório.</p>
+<p>Esta função é um alias para <tt class="docutils literal"><span class="pre">CI_Security::sanitize_filename()</span></tt>.
+Para mais informações, consulte a documentação da <a class="reference internal" href="../libraries/security.html"><em>Biblioteca de Segurança</em></a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -502,8 +501,8 @@ documentation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input</li>
-<li><strong>$type</strong> (<em>string</em>) &#8211; Algorithm</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; Entrada</li>
+<li><strong>$type</strong> (<em>string</em>) &#8211; Algoritmo</li>
 </ul>
 </td>
 </tr>
@@ -515,23 +514,21 @@ documentation.</p>
 </tr>
 </tbody>
 </table>
-<p>Permits you to create one way hashes suitable for encrypting
-passwords. Will use SHA1 by default.</p>
-<p>See <a class="reference external" href="http://php.net/function.hash_algos">hash_algos()</a>
-for a full list of supported algorithms.</p>
-<p>Examples:</p>
+<p>Permite que você crie hashes apropriados de maneira única para criptografar senhas. Usará SHA1 por padrão.</p>
+<p>Veja <a class="reference external" href="http://php.net/function.hash_algos">hash_algos()</a>
+para uma lista completa de algoritmos suportados.</p>
+<p>Exemplos:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$str</span> <span class="o">=</span> <span class="nx">do_hash</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span> <span class="c1">// SHA1</span>
 <span class="nv">$str</span> <span class="o">=</span> <span class="nx">do_hash</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span> <span class="s1">&#39;md5&#39;</span><span class="p">);</span> <span class="c1">// MD5</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This function was formerly named <tt class="docutils literal"><span class="pre">dohash()</span></tt>, which has been
-removed in favor of <tt class="docutils literal"><span class="pre">do_hash()</span></tt>.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Esta função anteriormente era chamada <tt class="docutils literal"><span class="pre">dohash()</span></tt>, que foi removida em favor de <tt class="docutils literal"><span class="pre">do_hash()</span></tt>.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This function is DEPRECATED. Use the native <tt class="docutils literal"><span class="pre">hash()</span></tt> instead.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Esta função é DESCONTINUADA. Use o <tt class="docutils literal"><span class="pre">hash()</span></tt> nativo em vez disso.</p>
 </div>
 </dd></dl>
 
@@ -543,11 +540,11 @@ removed in favor of <tt class="docutils literal"><span class="pre">do_hash()</sp
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">The input string with no image tags</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A string de entrada sem tags de imagem</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -555,15 +552,13 @@ removed in favor of <tt class="docutils literal"><span class="pre">do_hash()</sp
 </tr>
 </tbody>
 </table>
-<p>This is a security function that will strip image tags from a string.
-It leaves the image URL as plain text.</p>
-<p>Example:</p>
+<p>Esta é uma função de segurança que irá tirar as tags da imagem de uma string. Ele deixa o URL da imagem como texto simples.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$string</span> <span class="o">=</span> <span class="nx">strip_image_tags</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This function is an alias for <tt class="docutils literal"><span class="pre">CI_Security::strip_image_tags()</span></tt>. For
-more info, please see the <a class="reference internal" href="../libraries/security.html"><em>Security Library</em></a>
-documentation.</p>
+<p>Esta função é um alias para <tt class="docutils literal"><span class="pre">CI_Security::strip_image_tags()</span></tt>.
+Para mais informações, consulte a documentação da <a class="reference internal" href="../libraries/security.html"><em>Biblioteca de Segurança</em></a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -574,11 +569,11 @@ documentation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; String de entrada</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Safely formatted string</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">String formatada com segurança</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -586,12 +581,12 @@ documentation.</p>
 </tr>
 </tbody>
 </table>
-<p>This is a security function that converts PHP tags to entities.</p>
+<p>Esta é uma função de segurança que converte tags PHP em entidades.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><a class="reference internal" href="#xss_clean" title="xss_clean"><tt class="xref php php-func docutils literal"><span class="pre">xss_clean()</span></tt></a> does this automatically, if you use it.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last"><a class="reference internal" href="#xss_clean" title="xss_clean"><tt class="xref php php-func docutils literal"><span class="pre">xss_clean()</span></tt></a> faz isso automaticamente, se você usá-lo.</p>
 </div>
-<p>Example:</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$string</span> <span class="o">=</span> <span class="nx">encode_php_tags</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
 </pre></div>
 </div>
