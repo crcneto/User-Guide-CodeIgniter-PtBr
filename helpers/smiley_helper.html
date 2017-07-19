@@ -425,20 +425,18 @@
 
   <div class="section" id="smiley-helper">
 <h1>Auxiliar de Smiley<a class="headerlink" href="#smiley-helper" title="Permalink to this headline">¶</a></h1>
-<p>The Auxiliar de Smiley file contains functions that let you manage smileys
-(emoticons).</p>
+<p>O arquivo Auxiliar de Smiley contém funções que permitem administrar smileys (emoticons).</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">The Smiley helper is DEPRECATED and should not be used.
-It is currently only kept for backwards compatibility.</p>
+<p class="first admonition-title">Importante</p>
+<p class="last">O Auxiliar de Smiley foi DESCONITNUADO e não deve ser usado. Atualmente, ele é mantido apenas para compatibilidade com versões anteriores.</p>
 </div>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#loading-this-helper" id="id1">Carregando este Auxiliar</a></li>
-<li><a class="reference internal" href="#overview" id="id2">Overview</a></li>
-<li><a class="reference internal" href="#clickable-smileys-tutorial" id="id3">Clickable Smileys Tutorial</a><ul>
-<li><a class="reference internal" href="#the-controller" id="id4">The Controller</a></li>
-<li><a class="reference internal" href="#field-aliases" id="id5">Field Aliases</a></li>
+<li><a class="reference internal" href="#overview" id="id2">Visão geral</a></li>
+<li><a class="reference internal" href="#clickable-smileys-tutorial" id="id3">Tutorial de Smileys Clicável</a><ul>
+<li><a class="reference internal" href="#the-controller" id="id4">O Controller</a></li>
+<li><a class="reference internal" href="#field-aliases" id="id5">Campos Alias</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#available-functions" id="id6">Funções disponíveis</a></li>
@@ -452,39 +450,25 @@ It is currently only kept for backwards compatibility.</p>
 </div>
 </div>
 <div class="section" id="overview">
-<h2><a class="toc-backref" href="#id2">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The Smiley helper has a renderer that takes plain text smileys, like
-:-) and turns them into a image representation, like <img alt="smile!" src="../_images/smile.gif" /></p>
-<p>It also lets you display a set of smiley images that when clicked will
-be inserted into a form field. For example, if you have a blog that
-allows user commenting you can show the smileys next to the comment
-form. Your users can click a desired smiley and with the help of some
-JavaScript it will be placed into the form field.</p>
+<h2><a class="toc-backref" href="#id2">Visão geral</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>O Auxiliar de Smiley possui um renderizador que faz uma simulação de texto simples, como :-) e os transforma em uma representação de imagem, como <img alt="smile!" src="../_images/smile.gif" /></p>
+<p>Ele também permite que você exiba um conjunto de imagens de smiley que quando clicadas serão inseridas em um campo de formulário. Por exemplo, se você tiver um blog que permita ao usuário comentar, você pode mostrar os smileys ao lado do formulário de comentário. Seus usuários podem clicar em um smiley desejado e, com a ajuda de algum JavaScript, ele será colocado no campo do formulário.</p>
 </div>
 <div class="section" id="clickable-smileys-tutorial">
-<h2><a class="toc-backref" href="#id3">Clickable Smileys Tutorial</a><a class="headerlink" href="#clickable-smileys-tutorial" title="Permalink to this headline">¶</a></h2>
-<p>Here is an example demonstrating how you might create a set of clickable
-smileys next to a form field. This example requires that you first
-download and install the smiley images, then create a controller and the
-View as described.</p>
+<h2><a class="toc-backref" href="#id3">Tutorial de Smileys Clicável</a><a class="headerlink" href="#clickable-smileys-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Aqui está um exemplo que demonstra como você pode criar um conjunto de smileys clicáveis ​​ao lado de um campo de formulário. Este exemplo exige que você primeiro faça o download e instale as imagens do smiley, então crie um controller e uma view conforme descrito.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Before you begin, please <a class="reference external" href="https://ellislab.com/asset/ci_download_files/smileys.zip">download the smiley images</a>
-and put them in a publicly accessible place on your server.
-This helper also assumes you have the smiley replacement array
-located at <cite>application/config/smileys.php</cite></p>
+<p class="first admonition-title">Importante</p>
+<p class="last">Antes de começar, faça o <a class="reference external" href="https://ellislab.com/asset/ci_download_files/smileys.zip">download das imagens dos smileys</a> e coloque-as em um local acessível ao público no seu servidor. Este auxiliar também assume que você possui um array de substituição do smiley localizada em <cite>application/config/smileys.php</cite></p>
 </div>
 <div class="section" id="the-controller">
-<h3><a class="toc-backref" href="#id4">The Controller</a><a class="headerlink" href="#the-controller" title="Permalink to this headline">¶</a></h3>
-<p>In your <strong>application/controllers/</strong> directory, create a file called
-Smileys.php and place the code below in it.</p>
+<h3><a class="toc-backref" href="#id4">O Controller</a><a class="headerlink" href="#the-controller" title="Permalink to this headline">¶</a></h3>
+<p>No seu diretório <strong>application/controllers/</strong>, crie um arquivo chamado Smileys.php e coloque o código abaixo nele.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Change the URL in the <a class="reference internal" href="#get_clickable_smileys" title="get_clickable_smileys"><tt class="xref php php-func docutils literal"><span class="pre">get_clickable_smileys()</span></tt></a>
-function below so that it points to your smiley folder.</p>
+<p class="first admonition-title">Importante</p>
+<p class="last">Altere o URL na função <a class="reference internal" href="#get_clickable_smileys" title="get_clickable_smileys"><tt class="xref php php-func docutils literal"><span class="pre">get_clickable_smileys()</span></tt></a> abaixo para que ele aponte para a sua pasta smiley.</p>
 </div>
-<p>You&#8217;ll notice that in addition to the smiley helper, we are also using
-the <a class="reference internal" href="../libraries/table.html"><em>Table Class</em></a>:</p>
+<p>Você notará que, além do auxiliar do smiley, também estamos usando a <a class="reference internal" href="../libraries/table.html"><em>Classe de Tabela</em></a>:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Smileys</span> <span class="k">extends</span> <span class="nx">CI_Controller</span> <span class="p">{</span>
@@ -504,8 +488,7 @@ the <a class="reference internal" href="../libraries/table.html"><em>Table Class
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In your <strong>application/views/</strong> directory, create a file called <strong>smiley_view.php</strong>
-and place this code in it:</p>
+<p>No seu diretório <strong>application/views/</strong>, crie um arquivo chamado <strong>smiley_view.php</strong> e coloque este código nele:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Smileys</span><span class="o">&lt;/</span><span class="nx">title</span><span class="o">&gt;</span>
@@ -515,24 +498,21 @@ and place this code in it:</p>
                 <span class="nt">&lt;form</span> <span class="na">name=</span><span class="s">&quot;blog&quot;</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">&quot;comments&quot;</span> <span class="na">id=</span><span class="s">&quot;comments&quot;</span> <span class="na">cols=</span><span class="s">&quot;40&quot;</span> <span class="na">rows=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
                 <span class="nt">&lt;/form&gt;</span>
-                <span class="nt">&lt;p&gt;</span>Click to insert a smiley!<span class="nt">&lt;/p&gt;</span>
+                <span class="nt">&lt;p&gt;</span>Clique para inserir um smiley!<span class="nt">&lt;/p&gt;</span>
                 <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$smiley_table</span><span class="p">;</span> <span class="cp">?&gt;</span> <span class="nt">&lt;/body&gt;</span> <span class="nt">&lt;/html&gt;</span>
-                When you have created the above controller and view, load it by visiting http://www.example.com/index.php/smileys/
+                Quando você criou o controller e uma view acima, carregue-o visitando http://www.example.com/index.php/smileys/
         <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="field-aliases">
-<h3><a class="toc-backref" href="#id5">Field Aliases</a><a class="headerlink" href="#field-aliases" title="Permalink to this headline">¶</a></h3>
-<p>When making changes to a view it can be inconvenient to have the field
-id in the controller. To work around this, you can give your smiley
-links a generic name that will be tied to a specific id in your view.</p>
+<h3><a class="toc-backref" href="#id5">Campos Alias</a><a class="headerlink" href="#field-aliases" title="Permalink to this headline">¶</a></h3>
+<p>Ao fazer alterações em uma view, pode ser inconveniente ter o ID do campo no controller. Para contornar isso, você pode dar aos seus links de smiley um nome genérico que será vinculado a um id específico em sua view.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$image_array</span> <span class="o">=</span> <span class="nx">get_smiley_links</span><span class="p">(</span><span class="s2">&quot;http://example.com/images/smileys/&quot;</span><span class="p">,</span> <span class="s2">&quot;comment_textarea_alias&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>To map the alias to the field id, pass them both into the
-<tt class="xref py py-func docutils literal"><span class="pre">smiley_js()</span></tt> function:</p>
+<p>Para mapear o alias para o ID do campo, passe-os para a função <tt class="xref py py-func docutils literal"><span class="pre">smiley_js()</span></tt>:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$image_array</span> <span class="o">=</span> <span class="nx">smiley_js</span><span class="p">(</span><span class="s2">&quot;comment_textarea_alias&quot;</span><span class="p">,</span> <span class="s2">&quot;comments&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -548,12 +528,12 @@ links a generic name that will be tied to a specific id in your view.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$image_url</strong> (<em>string</em>) &#8211; URL path to the smileys directory</li>
-<li><strong>$alias</strong> (<em>string</em>) &#8211; Field alias</li>
+<li><strong>$image_url</strong> (<em>string</em>) &#8211; Caminho de URL para o diretório de smileys</li>
+<li><strong>$alias</strong> (<em>string</em>) &#8211; Campos Alias</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">An array of ready to use smileys</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Um array de smileys prontos para usar</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
@@ -561,10 +541,8 @@ links a generic name that will be tied to a specific id in your view.</p>
 </tr>
 </tbody>
 </table>
-<p>Returns an array containing your smiley images wrapped in a clickable
-link. You must supply the URL to your smiley folder and a field id or
-field alias.</p>
-<p>Example:</p>
+<p>Retorna um array contendo suas imagens de smiley envolvidas em um link clicável. Você deve fornecer o URL para sua pasta de smiley e um ID de campo ou alias de campo.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$image_array</span> <span class="o">=</span> <span class="nx">get_clickable_smileys</span><span class="p">(</span><span class="s1">&#39;http://example.com/images/smileys/&#39;</span><span class="p">,</span> <span class="s1">&#39;comment&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -578,13 +556,13 @@ field alias.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$alias</strong> (<em>string</em>) &#8211; Field alias</li>
-<li><strong>$field_id</strong> (<em>string</em>) &#8211; Field ID</li>
-<li><strong>$inline</strong> (<em>bool</em>) &#8211; Whether we&#8217;re inserting an inline smiley</li>
+<li><strong>$alias</strong> (<em>string</em>) &#8211; Campos Alias</li>
+<li><strong>$field_id</strong> (<em>string</em>) &#8211; Campo ID</li>
+<li><strong>$inline</strong> (<em>bool</em>) &#8211; Se estamos inserindo um smiley em linha</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Smiley-enabling JavaScript code</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Código JavaScript habilitado para Smiley</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -592,12 +570,8 @@ field alias.</p>
 </tr>
 </tbody>
 </table>
-<p>Generates the JavaScript that allows the images to be clicked and
-inserted into a form field. If you supplied an alias instead of an id
-when generating your smiley links, you need to pass the alias and
-corresponding form id into the function. This function is designed to be
-placed into the &lt;head&gt; area of your web page.</p>
-<p>Example:</p>
+<p>Gera o JavaScript que permite que as imagens sejam clicadas e inseridas em um campo de formulário. Se você forneceu um alias ao invés de um ID ao gerar seus links de smiley, você deve passar o alias e o ID de formulário correspondente na função. Esta função foi projetada para ser colocada na área &lt;head&gt; da sua página da web.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nx">smiley_js</span><span class="p">();</span> <span class="cp">?&gt;</span>
 </pre></div>
 </div>
@@ -611,13 +585,13 @@ placed into the &lt;head&gt; area of your web page.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Text containing smiley codes</li>
-<li><strong>$image_url</strong> (<em>string</em>) &#8211; URL path to the smileys directory</li>
-<li><strong>$smileys</strong> (<em>array</em>) &#8211; An array of smileys</li>
+<li><strong>$str</strong> (<em>string</em>) &#8211; Texto contendo códigos de smiley</li>
+<li><strong>$image_url</strong> (<em>string</em>) &#8211; Caminho de URL para o diretório de smileys</li>
+<li><strong>$smileys</strong> (<em>array</em>) &#8211; Um array de smileys</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Parsed smileys</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Smileys analisados</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -625,11 +599,9 @@ placed into the &lt;head&gt; area of your web page.</p>
 </tr>
 </tbody>
 </table>
-<p>Takes a string of text as input and replaces any contained plain text
-smileys into the image equivalent. The first parameter must contain your
-string, the second must contain the URL to your smiley folder</p>
-<p>Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$str</span> <span class="o">=</span> <span class="s1">&#39;Here are some smileys: :-)  ;-)&#39;</span><span class="p">;</span>
+<p>Pega uma string de texto como entrada e substitui todos os smileys de texto simples contidos para a imagem equivalente. O primeiro parâmetro deve conter sua string, o segundo deve conter o URL da sua pasta de smiley</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$str</span> <span class="o">=</span> <span class="s1">&#39;Aqui estão alguns smileys: :-)  ;-)&#39;</span><span class="p">;</span>
 <span class="nv">$str</span> <span class="o">=</span> <span class="nx">parse_smileys</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span> <span class="s1">&#39;http://example.com/images/smileys/&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$str</span><span class="p">;</span>
 </pre></div>
