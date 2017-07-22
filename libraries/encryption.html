@@ -426,124 +426,85 @@
   <div class="section" id="encryption-library">
 <h1>Biblioteca de Criptografia<a class="headerlink" href="#encryption-library" title="Permalink to this headline">¶</a></h1>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">DO NOT use this or any other <em>encryption</em> library for
-user password storage! Passwords must be <em>hashed</em> instead, and you
-should do that via PHP&#8217;s own <a class="reference external" href="http://php.net/password">Password Hashing extension</a>.</p>
+<p class="first admonition-title">Importante</p>
+<p class="last">NÃO use esta ou qualquer outra biblioteca de <em>criptografia</em> para o armazenamento de senha do usuário! As senhas devem ser substituídas, e você deve fazer isso via PHP <a class="reference external" href="http://php.net/password">Extensão de Hashing de Senha.</a>.</p>
 </div>
-<p>The Biblioteca de Criptografia provides two-way data encryption. To do so in
-a cryptographically secure way, it utilizes PHP extensions that are
-unfortunately not always available on all systems.
-You must meet one of the following dependencies in order to use this
-library:</p>
+<p>A Biblioteca de Criptografia fornece criptografia de dados bidirecionais. Para fazê-lo de forma criptográficamente segura, utiliza extensões PHP que, infelizmente, nem sempre estão disponíveis em todos os sistemas. Você deve atender a uma das seguintes dependências para usar esta biblioteca:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://php.net/openssl">OpenSSL</a> (and PHP 5.3.3)</li>
-<li><a class="reference external" href="http://php.net/mcrypt">MCrypt</a> (and <cite>MCRYPT_DEV_URANDOM</cite> availability)</li>
+<li><a class="reference external" href="http://php.net/openssl">OpenSSL</a> (e PHP 5.3.3)</li>
+<li><a class="reference external" href="http://php.net/mcrypt">MCrypt</a> (e <cite>MCRYPT_DEV_URANDOM</cite> disponíveis)</li>
 </ul>
-<p>If neither of the above dependencies is met, we simply cannot offer
-you a good enough implementation to meet the high standards required
-for proper cryptography.</p>
+<p>Se nenhuma das dependências acima for cumprida, simplesmente não podemos oferecer-lhe uma implementação suficientemente boa para atender aos altos padrões exigidos para criptografia adequada.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#using-the-encryption-library" id="id2">Using the Biblioteca de Criptografia</a><ul>
-<li><a class="reference internal" href="#initializing-the-class" id="id3">Initializing the Class</a></li>
-<li><a class="reference internal" href="#default-behavior" id="id4">Default behavior</a></li>
-<li><a class="reference internal" href="#setting-your-encryption-key" id="id5">Setting your encryption_key</a></li>
-<li><a class="reference internal" href="#supported-encryption-ciphers-and-modes" id="id6">Supported encryption ciphers and modes</a><ul>
-<li><a class="reference internal" href="#portable-ciphers" id="id7">Portable ciphers</a></li>
-<li><a class="reference internal" href="#driver-specific-ciphers" id="id8">Driver-specific ciphers</a></li>
-<li><a class="reference internal" href="#encryption-modes" id="id9">Encryption modes</a></li>
+<li><a class="reference internal" href="#using-the-encryption-library" id="id2">Usando a Biblioteca de Criptografia</a><ul>
+<li><a class="reference internal" href="#initializing-the-class" id="id3">Inicializando a Class</a></li>
+<li><a class="reference internal" href="#default-behavior" id="id4">Comportamento padrão</a></li>
+<li><a class="reference internal" href="#setting-your-encryption-key" id="id5">Configurando sua encryption_key</a></li>
+<li><a class="reference internal" href="#supported-encryption-ciphers-and-modes" id="id6">Cifras e modos de criptografia suportados</a><ul>
+<li><a class="reference internal" href="#portable-ciphers" id="id7">Cifras portáteis</a></li>
+<li><a class="reference internal" href="#driver-specific-ciphers" id="id8">Cifras específicas do driver</a></li>
+<li><a class="reference internal" href="#encryption-modes" id="id9">Modos de encriptação</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#message-length" id="id10">Message Length</a></li>
-<li><a class="reference internal" href="#configuring-the-library" id="id11">Configuring the library</a></li>
-<li><a class="reference internal" href="#encrypting-and-decrypting-data" id="id12">Encrypting and decrypting data</a><ul>
-<li><a class="reference internal" href="#how-it-works" id="id13">How it works</a></li>
-<li><a class="reference internal" href="#using-custom-parameters" id="id14">Using custom parameters</a></li>
-<li><a class="reference internal" href="#supported-hmac-authentication-algorithms" id="id15">Supported HMAC authentication algorithms</a></li>
+<li><a class="reference internal" href="#message-length" id="id10">Tamanho da mensagem</a></li>
+<li><a class="reference internal" href="#configuring-the-library" id="id11">Configurando a biblioteca</a></li>
+<li><a class="reference internal" href="#encrypting-and-decrypting-data" id="id12">Criptografar e descriptografar dados</a><ul>
+<li><a class="reference internal" href="#how-it-works" id="id13">Como isso trabalha?</a></li>
+<li><a class="reference internal" href="#using-custom-parameters" id="id14">Usando parâmetros personalizados</a></li>
+<li><a class="reference internal" href="#supported-hmac-authentication-algorithms" id="id15">Algoritmos de autenticação HMAC suportados</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#class-reference" id="id16">Class Reference</a></li>
+<li><a class="reference internal" href="#class-reference" id="id16">Referência da Classe</a></li>
 </ul>
 </div>
 <div class="custom-index container"></div><div class="section" id="using-the-encryption-library">
-<h2><a class="toc-backref" href="#id2">Using the Biblioteca de Criptografia</a><a class="headerlink" href="#using-the-encryption-library" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Usando a Biblioteca de Criptografia</a><a class="headerlink" href="#using-the-encryption-library" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="initializing-the-class">
-<h3><a class="toc-backref" href="#id3">Initializing the Class</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
-<p>Like most other classes in CodeIgniter, the Encryption library is
-initialized in your controller using the <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt>
-method:</p>
+<h3><a class="toc-backref" href="#id3">Inicializando a Classe</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
+<p>Como a maioria das outras classes em CodeIgniter, a biblioteca de criptografia é inicializada em seu controlador usando o método: <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt></p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;encryption&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Once loaded, the Encryption library object will be available using:</p>
+<p>Uma vez carregado, o objeto da biblioteca Criptografia estará disponível usando:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="default-behavior">
-<h3><a class="toc-backref" href="#id4">Default behavior</a><a class="headerlink" href="#default-behavior" title="Permalink to this headline">¶</a></h3>
-<p>By default, the Biblioteca de Criptografia will use the AES-128 cipher in CBC
-mode, using your configured <em>encryption_key</em> and SHA512 HMAC authentication.</p>
+<h3><a class="toc-backref" href="#id4">Comportamento padrão</a><a class="headerlink" href="#default-behavior" title="Permalink to this headline">¶</a></h3>
+<p>Por padrão, a Biblioteca de Criptografia usará a cifra AES-128 no modo CBC, usando sua <em>encryption_key</em> configurada e autenticação SHA512 HMAC.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">AES-128 is chosen both because it is proven to be strong and
-because of its wide availability across different cryptographic
-software and programming languages&#8217; APIs.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">AES-128 é escolhida tanto porque é provado ser forte e devido à sua ampla disponibilidade em diferentes programas criptográficos e APIs de linguagens de programação.</p>
 </div>
-<p>However, the <em>encryption_key</em> is not used as is.</p>
-<p>If you are somewhat familiar with cryptography, you should already know
-that a HMAC also requires a secret key and using the same key for both
-encryption and authentication is a bad practice.</p>
-<p>Because of that, two separate keys are derived from your already configured
-<em>encryption_key</em>: one for encryption and one for authentication. This is
-done via a technique called <a class="reference external" href="http://en.wikipedia.org/wiki/HKDF">HMAC-based Key Derivation Function</a> (HKDF).</p>
+<p>No entanto sua <em>encryption_key</em> não é usada como está.</p>
+<p>Se você está um pouco familiarizado com a criptografia, você já deve saber que um HMAC também requer uma chave secreta e usar a mesma chave para criptografia e autenticação é uma prática ruim.</p>
+<p>Por isso, duas chaves separadas derivam da sua <em>encryption_key</em> já configurada: uma para criptografia e outra para autenticação. Isso é feito através de uma técnica chamada 
+<a class="reference external" href="http://en.wikipedia.org/wiki/HKDF">HMAC-based Key Derivation Function</a> (HKDF).</p>
 </div>
 <div class="section" id="setting-your-encryption-key">
-<h3><a class="toc-backref" href="#id5">Setting your encryption_key</a><a class="headerlink" href="#setting-your-encryption-key" title="Permalink to this headline">¶</a></h3>
-<p>An <em>encryption key</em> is a piece of information that controls the
-cryptographic process and permits a plain-text string to be encrypted,
-and afterwards - decrypted. It is the secret &#8220;ingredient&#8221; in the whole
-process that allows you to be the only one who is able to decrypt data
-that you&#8217;ve decided to hide from the eyes of the public.
-After one key is used to encrypt data, that same key provides the <strong>only</strong>
-means to decrypt it, so not only must you chose one carefully, but you
-must not lose it or you will also lose access to the data.</p>
-<p>It must be noted that to ensure maximum security, such key <em>should</em> not
-only be as strong as possible, but also often changed. Such behavior
-however is rarely practical or possible to implement, and that is why
-CodeIgniter gives you the ability to configure a single key that is to be
-used (almost) every time.</p>
-<p>It goes without saying that you should guard your key carefully. Should
-someone gain access to your key, the data will be easily decrypted. If
-your server is not totally under your control it&#8217;s impossible to ensure
-key security so you may want to think carefully before using it for
-anything that requires high security, like storing credit card numbers.</p>
-<p>Your encryption key <strong>must</strong> be as long as the encyption algorithm in use
-allows. For AES-128, that&#8217;s 128 bits or 16 bytes (charcters) long.
-You will find a table below that shows the supported key lengths of
-different ciphers.</p>
-<p>The key should be as random as possible and it <strong>must not</strong> be a regular
-text string, nor the output of a hashing function, etc. In order to create
-a proper key, you must use the Encryption library&#8217;s <tt class="docutils literal"><span class="pre">create_key()</span></tt> method</p>
+<h3><a class="toc-backref" href="#id5">Configurando sua encryption_key</a><a class="headerlink" href="#setting-your-encryption-key" title="Permalink to this headline">¶</a></h3>
+<p>Uma <em>encryption key</em> é uma informação que controla o processo criptográfico e permite que uma seqüência de caracteres de texto simples seja criptografada e, posteriormente, descifrada. É o &#8220;ingrediente&#8221; secreto em todo o processo que permite que você seja o único que é capaz de descriptografar dados que você decidiu esconder dos olhos do público. Depois que uma chave é usada para criptografar dados, essa mesma chave fornece o <strong>único</strong> meio para descriptografá-la, portanto, não só você deve escolher um com cuidado, mas não deve perder ou você também perderá o acesso aos dados.</p>
+<p>Deve-se notar que, para garantir a máxima segurança, essa chave não deve ser tão forte quanto possível, mas também muitas vezes alterada. Esse comportamento, no entanto, raramente é prático ou é possível implementar, e é por isso que o CodeIgniter oferece a capacidade de configurar uma única chave que deve ser usada (quase) de cada vez.</p>
+<p>É evidente que você deve proteger sua chave com cuidado. Caso alguém obtenha acesso à sua chave, os dados serão facilmente descriptografados. Se o seu servidor não estiver totalmente sob seu controle, é impossível garantir a segurança das chaves, então você pode querer pensar com cuidado antes de usá-lo para qualquer coisa que exija alta segurança, como armazenar números de cartão de crédito.</p>
+<p>Sua <strong>chave de criptografia</strong> deve ser tão longa quanto o algoritmo de encyption em uso permitir. Para AES-128, são 128 bits ou 16 bytes (caracteres) longos. Você encontrará uma tabela abaixo que mostra os comprimentos de chave suportados de diferentes cifras.</p>
+<p>A chave deve ser o mais aleatória possível e <strong>não deve ser</strong> uma string de texto normal, nem a saída de uma função de hashing, etc. Para criar uma chave apropriada, você deve usar a biblioteca de criptografia com o método:
+<tt class="docutils literal"><span class="pre">create_key()</span></tt></p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="c1">// $key will be assigned a 16-byte (128-bit) random key</span>
 <span class="nv">$key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">create_key</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The key can be either stored in your <em>application/config/config.php</em>, or
-you can design your own storage mechanism and pass the key dynamically
-when encrypting/decrypting.</p>
-<p>To save your key to your <em>application/config/config.php</em>, open the file
-and set:</p>
+<p>A chave pode ser armazenada em <em>application/config/config.php</em>, ou você pode projetar seu próprio mecanismo de armazenamento e passar a chave dinamicamente ao criptografar/descriptografar.</p>
+<p>Para salvar sua chave, abra o arquivo <em>application/config/config.php</em> e configure:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;encryption_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;YOUR KEY&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>You&#8217;ll notice that the <tt class="docutils literal"><span class="pre">create_key()</span></tt> method outputs binary data, which
-is hard to deal with (i.e. a copy-paste may damage it), so you may use
-<tt class="docutils literal"><span class="pre">bin2hex()</span></tt>, <tt class="docutils literal"><span class="pre">hex2bin()</span></tt> or Base64-encoding to work with the key in
-a more friendly manner. For example:</p>
+<p>Você notará que o método <tt class="docutils literal"><span class="pre">create_key()</span></tt> produz dados binários, que é difícil de lidar (ou seja, uma cópia-colar pode danificá-lo), então você pode usar
+<tt class="docutils literal"><span class="pre">bin2hex()</span></tt>, <tt class="docutils literal"><span class="pre">hex2bin()</span></tt>
+ou codificação Base64 para trabalhar com a chave de uma maneira mais amigável. Por exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Get a hex-encoded representation of the key:</span>
 <span class="nv">$key</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">create_key</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
 
@@ -554,23 +515,16 @@ a more friendly manner. For example:</p>
 </div>
 </div>
 <div class="section" id="supported-encryption-ciphers-and-modes">
-<span id="ciphers-and-modes"></span><h3><a class="toc-backref" href="#id6">Supported encryption ciphers and modes</a><a class="headerlink" href="#supported-encryption-ciphers-and-modes" title="Permalink to this headline">¶</a></h3>
+<span id="ciphers-and-modes"></span><h3><a class="toc-backref" href="#id6">Cifras e modos de criptografia suportados</a><a class="headerlink" href="#supported-encryption-ciphers-and-modes" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The terms &#8216;cipher&#8217; and &#8216;encryption algorithm&#8217; are interchangeable.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Os termos &#8216;cipher&#8217; and &#8216;encryption algorithm&#8217; são intercambiáveis.</p>
 </div>
 <div class="section" id="portable-ciphers">
-<h4><a class="toc-backref" href="#id7">Portable ciphers</a><a class="headerlink" href="#portable-ciphers" title="Permalink to this headline">¶</a></h4>
-<p>Because MCrypt and OpenSSL (also called drivers throughout this document)
-each support different sets of encryption algorithms and often implement
-them in different ways, our Encryption library is designed to use them in
-a portable fashion, or in other words - it enables you to use them
-interchangeably, at least for the ciphers supported by both drivers.</p>
-<p>It is also implemented in a way that aims to match the standard
-implementations in other programming languages and libraries.</p>
-<p>Here&#8217;s a list of the so called &#8220;portable&#8221; ciphers, where
-&#8220;CodeIgniter name&#8221; is the string value that you&#8217;d have to pass to the
-Encryption library to use that cipher:</p>
+<h4><a class="toc-backref" href="#id7">Cifras portáteis</a><a class="headerlink" href="#portable-ciphers" title="Permalink to this headline">¶</a></h4>
+<p>Como o MCrypt e o OpenSSL (também chamados de drivers em todo este documento), cada um suporta diferentes conjuntos de algoritmos de criptografia e, muitas vezes, os implementa de maneiras diferentes, nossa biblioteca de Criptografia foi projetada para usá-los de forma portátil ou, em outras palavras, permite que você use Eles de forma intercambiável, pelo menos para as cifras suportadas pelos dois drivers.</p>
+<p>Também é implementado de forma a combinar as implementações padrão em outras linguagens de programação e bibliotecas.</p>
+<p>Aqui está uma lista dos chamados &#8220cifras portáteis&#8221, onde &#8220CodeIgniter name&#8221 é o valor da string que você deve passar para a biblioteca Criptografia para usar essa cifra:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
@@ -629,38 +583,26 @@ Encryption library to use that cipher:</p>
 </tbody>
 </table>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Because of how MCrypt works, if you fail to provide a key
-with the appropriate length, you might end up using a different
-algorithm than the one configured, so be really careful with that!</p>
+<p class="first admonition-title">Importante</p>
+<p class="last">Por causa de como o MCrypt funciona, se você não fornecer uma chave com o comprimento apropriado, você pode acabar usando um algoritmo diferente do configurado, então seja muito cuidadoso com isso!</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In case it isn&#8217;t clear from the above table, Blowfish, CAST5
-and RC4 support variable length keys. That is, any number in the
-shown ranges is valid, although in bit terms that only happens
-in 8-bit increments.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Caso não seja claro a partir da tabela acima, Blowfish, CAST5 e RC4 suportam chaves de comprimento variável. Ou seja, qualquer número nos intervalos mostrados é válido, embora em termos de bit que só aconteça em incrementos de 8 bits.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Even though CAST5 supports key lengths lower than 128 bits
-(16 bytes), in fact they will just be zero-padded to the
-maximum length, as specified in <a class="reference external" href="http://tools.ietf.org/rfc/rfc2144.txt">RFC 2144</a>.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Apesar de CAST5 suportar comprimentos de chave inferiores a 128 bits (16 bytes), na verdade, eles serão apenas preenchidos com o comprimento máximo, conforme especificado em 
+    <a class="reference external" href="http://tools.ietf.org/rfc/rfc2144.txt">RFC 2144</a>.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Blowfish supports key lengths as small as 32 bits (4 bytes), but
-our tests have shown that only lengths of 128 bits (16 bytes) or
-higher are properly supported by both MCrypt and OpenSSL. It is
-also a bad practice to use such low-length keys anyway.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Blowfish suporta comprimentos de teclas tão pequenos quanto 32 bits (4 bytes), mas nossos testes mostraram que apenas comprimentos de 128 bits (16 bytes) ou superiores são suportados corretamente pelo MCrypt e OpenSSL. Também é uma prática ruim usar tais chaves de baixo comprimento de qualquer maneira.</p>
 </div>
 </div>
 <div class="section" id="driver-specific-ciphers">
-<h4><a class="toc-backref" href="#id8">Driver-specific ciphers</a><a class="headerlink" href="#driver-specific-ciphers" title="Permalink to this headline">¶</a></h4>
-<p>As noted above, MCrypt and OpenSSL support different sets of encryption
-ciphers. For portability reasons and because we haven&#8217;t tested them
-properly, we do not advise you to use the ones that are driver-specific,
-but regardless, here&#8217;s a list of most of them:</p>
+<h4><a class="toc-backref" href="#id8">Cifras específicas do driver</a><a class="headerlink" href="#driver-specific-ciphers" title="Permalink to this headline">¶</a></h4>
+<p>Conforme mencionado acima, o MCrypt e o OpenSSL suportam diferentes conjuntos de criptografia criptografia. Por razões de portabilidade e porque não as testamos corretamente, não recomendamos que use as que são específicas do driver, mas, independentemente disso, aqui está uma lista da maioria delas:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="15%" />
@@ -779,44 +721,25 @@ but regardless, here&#8217;s a list of most of them:</p>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you wish to use one of those ciphers, you&#8217;d have to pass
-its name in lower-case to the Encryption library.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Se você deseja usar uma dessas cifras, você deve passar seu nome em minúsculas para a biblioteca de Criptografia.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You&#8217;ve probably noticed that all AES cipers (and Rijndael-128)
-are also listed in the portable ciphers list. This is because
-drivers support different modes for these ciphers. Also, it is
-important to note that AES-128 and Rijndael-128 are actually
-the same cipher, but <strong>only</strong> when used with a 128-bit key.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Você provavelmente notou que todos os cipers AES (e Rijndael-128) também estão listados na lista de cifras portáteis. Isso ocorre porque os drivers suportam diferentes modos para essas cifras. Além disso, é importante notar que AES-128 e Rijndael-128 são na verdade a mesma cifra, mas <strong>somente</strong> quando usado com uma chave de 128 bits.
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">CAST-128 / CAST-5 is also listed in both the portable and
-driver-specific ciphers list. This is because OpenSSL&#8217;s
-implementation doesn&#8217;t appear to be working correctly with
-key sizes of 80 bits and lower.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">CAST-128/CAST-5 também está listado na lista de criptografia portátil e específica do driver. Isso ocorre porque a implementação do OpenSSL não parece estar funcionando corretamente com tamanhos de chave de 80 bits e menor.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">RC2 is listed as supported by both MCrypt and OpenSSL.
-However, both drivers implement them differently and they
-are not portable. It is probably worth noting that we only
-found one obscure source confirming that it is MCrypt that
-is not properly implementing it.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">RC2 é listado como suportado pelo MCrypt e OpenSSL. No entanto, ambos os drivers os implementam de forma diferente e não são portáteis. Provavelmente vale a pena notar que só encontramos uma fonte obscura confirmando que é o MCrypt que não está implementando adequadamente.</p>
 </div>
 </div>
 <div class="section" id="encryption-modes">
-<span id="id1"></span><h4><a class="toc-backref" href="#id9">Encryption modes</a><a class="headerlink" href="#encryption-modes" title="Permalink to this headline">¶</a></h4>
-<p>Different modes of encryption have different characteristics and serve
-for different purposes. Some are stronger than others, some are faster
-and some offer extra features.
-We are not going in depth into that here, we&#8217;ll leave that to the
-cryptography experts. The table below is to provide brief informational
-reference to our more experienced users. If you are a beginner, just
-stick to the CBC mode - it is widely accepted as strong and secure for
-general purposes.</p>
+<span id="id1"></span><h4><a class="toc-backref" href="#id9">Modos de criptografia</a><a class="headerlink" href="#encryption-modes" title="Permalink to this headline">¶</a></h4>
+<p>Diferentes modos de criptografia têm características diferentes e servem para diferentes fins. Alguns são mais fortes do que outros, alguns são mais rápidos e alguns oferecem recursos extras. Não vamos aprofundar isso aqui, vamos deixar isso para os especialistas em criptografia. A tabela abaixo é fornecer uma referência informativa breve aos nossos usuários mais experientes. Se você é iniciante, basta manter o modo CBC - é amplamente aceito como forte e seguro para fins gerais.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="6%" />
@@ -882,27 +805,19 @@ general purposes.</p>
 </div>
 </div>
 <div class="section" id="message-length">
-<h3><a class="toc-backref" href="#id10">Message Length</a><a class="headerlink" href="#message-length" title="Permalink to this headline">¶</a></h3>
-<p>It&#8217;s probably important for you to know that an encrypted string is usually
-longer than the original, plain-text string (depending on the cipher).</p>
-<p>This is influenced by the cipher algorithm itself, the IV prepended to the
-cipher-text and the HMAC authentication message that is also prepended.
-Furthermore, the encrypted message is also Base64-encoded so that it is safe
-for storage and transmission, regardless of a possible character set in use.</p>
-<p>Keep this information in mind when selecting your data storage mechanism.
-Cookies, for example, can only hold 4K of information.</p>
+<h3><a class="toc-backref" href="#id10">Tamanho da mensagem</a><a class="headerlink" href="#message-length" title="Permalink to this headline">¶</a></h3>
+<p>Provavelmente é importante que você saiba que uma seqüência de caracteres criptografada geralmente é mais longa do que a string de texto simples original (dependendo da cifra).</p>
+<p>Isso é influenciado pelo próprio algoritmo de cifra, o IV antecipado ao texto criptografado e à mensagem de autenticação HMAC que também é pré-adotada. Além disso, a mensagem criptografada também é codificada em Base64 para que seja segura para armazenamento e transmissão, independentemente de um possível conjunto de caracteres em uso.</p>
+<p>Tenha em mente esta informação ao selecionar seu mecanismo de armazenamento de dados. Cookies, por exemplo, só podem conter 4K de informações.</p>
 </div>
 <div class="section" id="configuring-the-library">
-<span id="configuration"></span><h3><a class="toc-backref" href="#id11">Configuring the library</a><a class="headerlink" href="#configuring-the-library" title="Permalink to this headline">¶</a></h3>
-<p>For usability, performance, but also historical reasons tied to our old
-<a class="reference internal" href="encrypt.html"><em>Classe de Criptografia</em></a>, the Encryption library is designed to
-use repeatedly the same driver, encryption cipher, mode and key.</p>
-<p>As noted in the &#8220;Default behavior&#8221; section above, this means using an
-auto-detected driver (OpenSSL has a higher priority), the AES-128 ciper
-in CBC mode, and your <tt class="docutils literal"><span class="pre">$config['encryption_key']</span></tt> value.</p>
-<p>If you wish to change that however, you need to use the <tt class="docutils literal"><span class="pre">initialize()</span></tt>
-method. It accepts an associative array of parameters, all of which are
-optional:</p>
+<span id="configuration"></span><h3><a class="toc-backref" href="#id11">Configurando a Biblioteca</a><a class="headerlink" href="#configuring-the-library" title="Permalink to this headline">¶</a></h3>
+<p>Para usabilidade, desempenho, mas também razões históricas ligadas a nossa antiga 
+<a class="reference internal" href="encrypt.html"><em>Classe de Criptografia</em></a>, 
+a biblioteca Criptografia foi projetada para usar repetidamente o mesmo driver, criptografia criptografia, modo e chave.</p>
+<p>Conforme observado na seção "Comportamento padrão" acima, isso significa usar um driver auto-detectado (OpenSSL tem uma prioridade mais alta), o AES-128 ciper no modo CBC e seu valor <tt class="docutils literal"><span class="pre">$config['encryption_key']</span></tt>.</p>
+<p>Se desejar alterar isso, você precisa usar o método <tt class="docutils literal"><span class="pre">initialize()</span></tt>
+  ele aceita uma matriz associativa de parâmetros, todos os quais são opcionais:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="15%" />
@@ -928,8 +843,7 @@ optional:</p>
 </tr>
 </tbody>
 </table>
-<p>For example, if you were to change the encryption algorithm and
-mode to AES-256 in CTR mode, this is what you should do:</p>
+<p>Por exemplo, se você alterasse o algoritmo de criptografia e o modo para AES-256 no modo CTR, isso é o que você deve fazer:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span>
         <span class="k">array</span><span class="p">(</span>
                 <span class="s1">&#39;cipher&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;aes-256&#39;</span><span class="p">,</span>
@@ -939,11 +853,8 @@ mode to AES-256 in CTR mode, this is what you should do:</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Note that we only mentioned that you want to change the ciper and mode,
-but we also included a key in the example. As previously noted, it is
-important that you choose a key with a proper size for the used algorithm.</p>
-<p>There&#8217;s also the ability to change the driver, if for some reason you
-have both, but want to use MCrypt instead of OpenSSL:</p>
+<p>Note-se que apenas mencionamos que você deseja alterar o modo e o código, mas também incluímos uma chave no exemplo. Como observado anteriormente, é importante que você escolha uma chave com um tamanho adequado para o algoritmo usado.</p>
+<p>Há também a capacidade de mudar o driver, se por algum motivo você tiver ambos, mas quer usar o MCrypt em vez do OpenSSL:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Switch to the MCrypt driver</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;driver&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mcrypt&#39;</span><span class="p">));</span>
 
@@ -953,10 +864,9 @@ have both, but want to use MCrypt instead of OpenSSL:</p>
 </div>
 </div>
 <div class="section" id="encrypting-and-decrypting-data">
-<h3><a class="toc-backref" href="#id12">Encrypting and decrypting data</a><a class="headerlink" href="#encrypting-and-decrypting-data" title="Permalink to this headline">¶</a></h3>
-<p>Encrypting and decrypting data with the already configured library
-settings is simple. As simple as just passing the string to the
-<tt class="docutils literal"><span class="pre">encrypt()</span></tt> and/or <tt class="docutils literal"><span class="pre">decrypt()</span></tt> methods:</p>
+<h3><a class="toc-backref" href="#id12">Criptografia e Descriptografia de dados</a><a class="headerlink" href="#encrypting-and-decrypting-data" title="Permalink to this headline">¶</a></h3>
+<p>Criptografar e descriptografar dados com as configurações de biblioteca já configuradas é simples. Tão simples quanto apenas passar a string para o
+<tt class="docutils literal"><span class="pre">encrypt()</span></tt> e/ou o método <tt class="docutils literal"><span class="pre">decrypt()</span></tt>:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$plain_text</span> <span class="o">=</span> <span class="s1">&#39;This is a plain-text message!&#39;</span><span class="p">;</span>
 <span class="nv">$ciphertext</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="nv">$plain_text</span><span class="p">);</span>
 
@@ -964,70 +874,47 @@ settings is simple. As simple as just passing the string to the
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>And that&#8217;s it! The Encryption library will do everything necessary
-for the whole process to be cryptographically secure out-of-the-box.
-You don&#8217;t need to worry about it.</p>
+<p>E é isso! A biblioteca de Criptografia fará tudo o necessário para que todo o processo seja criptograficamente seguro. Você não precisa se preocupar com isso.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Both methods will return FALSE in case of an error.
-While for <tt class="docutils literal"><span class="pre">encrypt()</span></tt> this can only mean incorrect
-configuration, you should always check the return value
-of <tt class="docutils literal"><span class="pre">decrypt()</span></tt> in production code.</p>
+<p class="first admonition-title">Importante</p>
+<p class="last">Ambos os métodos retornarão FALSE em caso de erro. Enquanto para
+<tt class="docutils literal"><span class="pre">encrypt()</span></tt>
+ isso só pode significar configuração incorreta, você deve sempre verificar o valor de retorno de
+<tt class="docutils literal"><span class="pre">decrypt()</span></tt> no código de produção.</p>
 </div>
 <div class="section" id="how-it-works">
 <h4><a class="toc-backref" href="#id13">How it works</a><a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h4>
-<p>If you must know how the process works, here&#8217;s what happens under
-the hood:</p>
+<p>Se você deve saber como o processo funciona, aqui está o que acontece:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;encrypt($plain_text)</span></tt><ol class="arabic">
-<li>Derive an encryption key and a HMAC key from your configured
-<em>encryption_key</em> via HKDF, using the SHA-512 digest algorithm.</li>
-<li>Generate a random initialization vector (IV).</li>
-<li>Encrypt the data via AES-128 in CBC mode (or another previously
-configured cipher and mode), using the above-mentioned derived
-encryption key and IV.</li>
-<li>Prepend said IV to the resulting cipher-text.</li>
-<li>Base64-encode the resulting string, so that it can be safely
-stored or transferred without worrying about character sets.</li>
-<li>Create a SHA-512 HMAC authentication message using the derived
-HMAC key to ensure data integrity and prepend it to the Base64
-string.</li>
+<li>Derive uma <em>chave de criptografia</em> e uma chave HMAC da sua <em> configurada através do HKDF, usando o algoritmo SHA-512 digest.</li>
+<li>Gerar um vetor de inicialização aleatória (IV).</li>
+<li>Criptografar os dados via AES-128 no modo CBC (ou outra cifra e modo previamente configurados), usando a chave de criptografia derivada acima mencionada e IV.</li>
+<li>Repita o IV para o texto cifrado resultante.</li>
+<li>Base64 - codifica a string resultante, para que possa ser armazenada ou transferida com segurança sem se preocupar com conjuntos de caracteres</li>
+<li>Crie uma mensagem de autenticação SHA-512 HMAC usando a chave HMAC derivada para garantir a integridade dos dados e prependê-la na seqüência Base64.</li>
 </ol>
 </li>
 <li><tt class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;decrypt($ciphertext)</span></tt><ol class="arabic">
-<li>Derive an encryption key and a HMAC key from your configured
-<em>encryption_key</em> via HKDF, using the SHA-512 digest algorithm.
-Because your configured <em>encryption_key</em> is the same, this
-will produce the same result as in the <tt class="docutils literal"><span class="pre">encrypt()</span></tt> method
-above - otherwise you won&#8217;t be able to decrypt it.</li>
-<li>Check if the string is long enough, separate the HMAC out of
-it and validate if it is correct (this is done in a way that
-prevents timing attacks agains it). Return FALSE if either of
-the checks fails.</li>
+<li>Derive uma chave de criptografia e uma chave HMAC da sua <em>chave de criptografia</em> configurada através do HKDF, usando o algoritmo SHA-512 digest. Como a <em>chave de criptografia</em> configurada é a mesma, isso produzirá o mesmo resultado que no método acima <tt class="docutils literal"><span class="pre">encrypt()</span></tt>
+caso contrário você não poderá descriptografá-lo.</li>
+<li>Verifique se a string é suficientemente longa, separe o HMAC e valide se estiver correto (isso é feito de forma a evitar ataques de temporização novamente). Retorne FALSO se qualquer uma das verificações falhar. Base64 - decodifica a string.</li>
 <li>Base64-decode the string.</li>
-<li>Separate the IV out of the cipher-text and decrypt the said
-cipher-text using that IV and the derived encryption key.</li>
+<li>Separe o IV do texto cifrado e desencripte o referido texto cifrado usando esse IV e a chave de criptografia derivada.</li>
 </ol>
 </li>
 </ul>
 </div>
 <div class="section" id="using-custom-parameters">
-<span id="custom-parameters"></span><h4><a class="toc-backref" href="#id14">Using custom parameters</a><a class="headerlink" href="#using-custom-parameters" title="Permalink to this headline">¶</a></h4>
-<p>Let&#8217;s say you have to interact with another system that is out
-of your control and uses another method to encrypt data. A
-method that will most certainly not match the above-described
-sequence and probably not use all of the steps either.</p>
-<p>The Encryption library allows you to change how its encryption
-and decryption processes work, so that you can easily tailor a
-custom solution for such situations.</p>
+<span id="custom-parameters"></span><h4><a class="toc-backref" href="#id14">Usando parâmetros personalizados</a><a class="headerlink" href="#using-custom-parameters" title="Permalink to this headline">¶</a></h4>
+<p>Digamos que você tenha que interagir com outro sistema que está fora de seu controle e usa outro método para criptografar dados. Um método que certamente não combinará com a seqüência descrita acima e provavelmente também não usará todas as etapas.</p>
+<p>A biblioteca de criptografia permite que você altere a forma como os processos de criptografia e decodificação funcionam, de modo que você possa adaptar facilmente uma solução personalizada para essas situações.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is possible to use the library in this way, without
-setting an <em>encryption_key</em> in your configuration file.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">É possível usar a biblioteca desta maneira, sem configurar uma <em>encryption_key</em> no seu arquivo de configuração.</p>
 </div>
-<p>All you have to do is to pass an associative array with a few
-parameters to either the <tt class="docutils literal"><span class="pre">encrypt()</span></tt> or <tt class="docutils literal"><span class="pre">decrypt()</span></tt> method.
-Here&#8217;s an example:</p>
+<p>Tudo o que você precisa fazer é passar uma matriz associativa com alguns parâmetros para o método <tt class="docutils literal"><span class="pre">encrypt()</span></tt> ou <tt class="docutils literal"><span class="pre">decrypt()</span></tt>.
+Aqui está um exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Assume that we have $ciphertext, $key and $hmac_key</span>
 <span class="c1">// from on outside source</span>
 
@@ -1043,19 +930,13 @@ Here&#8217;s an example:</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>In the above example, we are decrypting a message that was encrypted
-using the Blowfish cipher in CBC mode and authenticated via a SHA-256
-HMAC.</p>
+<p>No exemplo acima, estamos decodificando uma mensagem que foi criptografada usando a cifra Blowfish no modo CBC e autenticada via um SHM-256 HMAC.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Note that both &#8216;key&#8217; and &#8216;hmac_key&#8217; are used in this
-example. When using custom parameters, encryption and HMAC keys
-are not derived like the default behavior of the library is.</p>
+<p class="first admonition-title">Importante</p>
+<p class="last">Observe que a &#8216;key&#8217; e &#8216;hmac_key&#8217; são usadas neste exemplo. Ao usar parâmetros personalizados, a criptografia e as teclas HMAC não são derivadas, como o comportamento padrão da biblioteca.</p>
 </div>
-<p>Below is a list of the available options.</p>
-<p>However, unless you really need to and you know what you are doing,
-we advise you to not change the encryption process as this could
-impact security, so please do so with caution.</p>
+<p>Abaixo está uma lista das opções disponíveis.</p>
+<p>No entanto, a menos que você realmente precise e você sabe o que está fazendo, recomendamos que você não altere o processo de criptografia, pois isso pode afetar a segurança, por isso, faça isso com cautela.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -1074,57 +955,49 @@ impact security, so please do so with caution.</p>
 <tr class="row-even"><td>cipher</td>
 <td>N/A</td>
 <td>Yes</td>
-<td>Encryption algorithm (see <a class="reference internal" href="#ciphers-and-modes"><em>Supported encryption ciphers and modes</em></a>).</td>
+<td>Algoritmo de criptografia (veja em <a class="reference internal" href="#ciphers-and-modes"><em>Cifras e modos de criptografia suportados</em></a>).</td>
 </tr>
 <tr class="row-odd"><td>mode</td>
 <td>N/A</td>
 <td>Yes</td>
-<td>Encryption mode (see <a class="reference internal" href="#encryption-modes"><em>Encryption modes</em></a>).</td>
+<td>Modo de criptografia (veja em <a class="reference internal" href="#encryption-modes"><em>Modos de criptografia</em></a>).</td>
 </tr>
 <tr class="row-even"><td>key</td>
 <td>N/A</td>
 <td>Yes</td>
-<td>Encryption key.</td>
+<td>Chave de criptografia.</td>
 </tr>
 <tr class="row-odd"><td>hmac</td>
 <td>TRUE</td>
 <td>No</td>
-<td>Whether to use a HMAC.
-Boolean. If set to FALSE, then <em>hmac_digest</em> and
-<em>hmac_key</em> will be ignored.</td>
+<td>Quer usar um HMAC. Boleano. Se definido como FALSO, então <em>hmac_digest</em> e <em>hmac_key</em> serão ignorados</td>
 </tr>
 <tr class="row-even"><td>hmac_digest</td>
 <td>sha512</td>
 <td>No</td>
-<td>HMAC message digest algorithm (see <a class="reference internal" href="#digests"><em>Supported HMAC authentication algorithms</em></a>).</td>
+<td>Algorítmo de mensagem digest HMAC (veja em <a class="reference internal" href="#digests"><em>Algoritmos autenticados HMAC suportados</em></a>).</td>
 </tr>
 <tr class="row-odd"><td>hmac_key</td>
 <td>N/A</td>
 <td>Yes, unless <em>hmac</em> is FALSE</td>
-<td>HMAC key.</td>
+<td>Chave HMAC.</td>
 </tr>
 <tr class="row-even"><td>raw_data</td>
 <td>FALSE</td>
 <td>No</td>
-<td>Whether the cipher-text should be raw.
-Boolean. If set to TRUE, then Base64 encoding and
-decoding will not be performed and HMAC will not
-be a hexadecimal string.</td>
+<td>Se o texto cifrado deve ser cru. Boleano. Se configurado para TRUE, a codificação e decodificação Base64 não serão executadas e o HMAC não será uma string hexadecimal.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last"><tt class="docutils literal"><span class="pre">encrypt()</span></tt> and <tt class="docutils literal"><span class="pre">decrypt()</span></tt> will return FALSE if
-a mandatory parameter is not provided or if a provided
-value is incorrect. This includes <em>hmac_key</em>, unless <em>hmac</em>
-is set to FALSE.</p>
+<p class="first admonition-title">Importante</p>
+<p class="last"><tt class="docutils literal"><span class="pre">encrypt()</span></tt> and <tt class="docutils literal"><span class="pre">decrypt()</span></tt>
+Retornará FALSE se um parâmetro obrigatório não for fornecido ou se um valor fornecido estiver incorreto. Isso inclui <em>hmac_key</em>, a menos que hmac esteja definido como FALSE.</p>
 </div>
 </div>
 <div class="section" id="supported-hmac-authentication-algorithms">
-<span id="digests"></span><h4><a class="toc-backref" href="#id15">Supported HMAC authentication algorithms</a><a class="headerlink" href="#supported-hmac-authentication-algorithms" title="Permalink to this headline">¶</a></h4>
-<p>For HMAC message authentication, the Encryption library supports
-usage of the SHA-2 family of algorithms:</p>
+<span id="digests"></span><h4><a class="toc-backref" href="#id15">Algoritmos autenticados HMAC suportados</a><a class="headerlink" href="#supported-hmac-authentication-algorithms" title="Permalink to this headline">¶</a></h4>
+<p>Para autenticação de mensagens HMAC, a biblioteca Encryption suporta o uso da família de algoritmos SHA-2:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -1156,18 +1029,13 @@ usage of the SHA-2 family of algorithms:</p>
 </tr>
 </tbody>
 </table>
-<p>The reason for not including other popular algorithms, such as
-MD5 or SHA1 is that they are no longer considered secure enough
-and as such, we don&#8217;t want to encourage their usage.
-If you absolutely need to use them, it is easy to do so via PHP&#8217;s
-native <a class="reference external" href="http://php.net/manual/en/function.hash-hmac.php">hash_hmac()</a> function.</p>
-<p>Stronger algorithms of course will be added in the future as they
-appear and become widely available.</p>
+<p>A razão para não incluir outros algoritmos populares, como MD5 ou SHA1, é que eles não são mais considerados seguros o suficiente e, como tal, não queremos encorajar seu uso. Se você precisa absolutamente usá-los, é fácil fazê-lo através da função nativa do PHP <a class="reference external" href="http://php.net/manual/en/function.hash-hmac.php">hash_hmac()</a>.</p>
+<p>Os algoritmos mais fortes, é claro, serão adicionados no futuro à medida que aparecem e se tornem amplamente disponíveis.</p>
 </div>
 </div>
 </div>
 <div class="section" id="class-reference">
-<h2><a class="toc-backref" href="#id16">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Referência de Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Encryption">
 <em class="property">class </em><tt class="descname">CI_Encryption</tt><a class="headerlink" href="#CI_Encryption" title="Permalink to this definition">¶</a></dt>
@@ -1179,11 +1047,11 @@ appear and become widely available.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$params</strong> (<em>array</em>) &#8211; Configuration parameters</li>
+<li><strong>$params</strong> (<em>array</em>) &#8211;  Parâmetros de configuração</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">CI_Encryption instance (method chaining)</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">CI_Encryption instance (método de encadeamento)</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">CI_Encryption</p>
@@ -1191,15 +1059,14 @@ appear and become widely available.</p>
 </tr>
 </tbody>
 </table>
-<p>Initializes (configures) the library to use a different
-driver, cipher, mode or key.</p>
-<p>Example:</p>
+<p>Inicializa (configura) a biblioteca para usar um driver, cifra, modo ou chave diferente.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span>
         <span class="k">array</span><span class="p">(</span><span class="s1">&#39;mode&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ctr&#39;</span><span class="p">)</span>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="#configuration"><em>Configuring the library</em></a> section for detailed info.</p>
+<p>Por favor, consulte a seção <a class="reference internal" href="#configuration"><em>Biblioteca de Configuração</em></a> para mais informações detalhadas.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1210,12 +1077,12 @@ driver, cipher, mode or key.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Data to encrypt</li>
-<li><strong>$params</strong> (<em>array</em>) &#8211; Optional parameters</li>
+<li><strong>$data</strong> (<em>string</em>) &#8211; Dados para criptografar</li>
+<li><strong>$params</strong> (<em>array</em>) &#8211; Parâmetros opcionais</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Encrypted data or FALSE on failure</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Dados criptografados ou FALSE em caso de falha.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -1223,13 +1090,12 @@ driver, cipher, mode or key.</p>
 </tr>
 </tbody>
 </table>
-<p>Encrypts the input data and returns its ciphertext.</p>
-<p>Example:</p>
+<p>Criptografa os dados de entrada e retorna o texto cifrado.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$ciphertext</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="s1">&#39;My secret message&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="#custom-parameters"><em>Using custom parameters</em></a> section for information
-on the optional parameters.</p>
+<p>Por favor, consulte a seção <a class="reference internal" href="#custom-parameters"><em>Usando parâmetros personalizados</em></a> para mais informações detalhadas.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1240,12 +1106,12 @@ on the optional parameters.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Data to decrypt</li>
-<li><strong>$params</strong> (<em>array</em>) &#8211; Optional parameters</li>
+<li><strong>$data</strong> (<em>string</em>) &#8211; Dados para descriptografar</li>
+<li><strong>$params</strong> (<em>array</em>) &#8211; Parâmetros opcionais </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Decrypted data or FALSE on failure</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Dados descriptografados ou FALSE em caso de falha</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -1253,12 +1119,12 @@ on the optional parameters.</p>
 </tr>
 </tbody>
 </table>
-<p>Decrypts the input data and returns it in plain-text.</p>
-<p>Example:</p>
+<p>Decodifica os dados de entrada e o retorna em texto simples.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="#custom-parameters"><em>Using custom parameters</em></a> secrion for information
+<p>Por favor, consulte a seção <a class="reference internal" href="#custom-parameters"><em>Usando parâmetros personalizados</em></a> para obter informações sobre os parâmetros opcionais.
 on the optional parameters.</p>
 </dd></dl>
 
@@ -1270,11 +1136,11 @@ on the optional parameters.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$length</strong> (<em>int</em>) &#8211; Output length</li>
+<li><strong>$length</strong> (<em>int</em>) &#8211; Tamanho da saída</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A pseudo-random cryptographic key with the specified length, or FALSE on failure</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Uma chave criptográfica pseudo-aleatória com o comprimento especificado, ou FALSE em falha</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -1282,8 +1148,7 @@ on the optional parameters.</p>
 </tr>
 </tbody>
 </table>
-<p>Creates a cryptographic key by fetching random data from
-the operating system&#8217;s sources (i.e. /dev/urandom).</p>
+<p>Cria uma chave criptográfica ao buscar dados aleatórios das fontes do sistema operacional (i.e. /dev/urandom).</p>
 </dd></dl>
 
 <dl class="method">
@@ -1294,15 +1159,15 @@ the operating system&#8217;s sources (i.e. /dev/urandom).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$key</strong> (<em>string</em>) &#8211; Input key material</li>
-<li><strong>$digest</strong> (<em>string</em>) &#8211; A SHA-2 family digest algorithm</li>
-<li><strong>$salt</strong> (<em>string</em>) &#8211; Optional salt</li>
-<li><strong>$length</strong> (<em>int</em>) &#8211; Optional output length</li>
-<li><strong>$info</strong> (<em>string</em>) &#8211; Optional context/application-specific info</li>
+<li><strong>$key</strong> (<em>string</em>) &#8211; Material da chave de entrada</li>
+<li><strong>$digest</strong> (<em>string</em>) &#8211; Um algoritmo digest de família SHA-2</li>
+<li><strong>$salt</strong> (<em>string</em>) &#8211; Salt opcional</li>
+<li><strong>$length</strong> (<em>int</em>) &#8211; Tamanho da saída opcional</li>
+<li><strong>$info</strong> (<em>string</em>) &#8211; Contexto opcional/informação específica do aplicativo</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A pseudo-random key or FALSE on failure</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Uma chave pseudo-aleatória ou FALSE em caso de falha</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">string</p>
@@ -1310,14 +1175,11 @@ the operating system&#8217;s sources (i.e. /dev/urandom).</p>
 </tr>
 </tbody>
 </table>
-<p>Derives a key from another, presumably weaker key.</p>
-<p>This method is used internally to derive an encryption and HMAC key
-from your configured <em>encryption_key</em>.</p>
-<p>It is publicly available due to its otherwise general purpose. It is
-described in <a class="reference external" href="https://tools.ietf.org/rfc/rfc5869.txt">RFC 5869</a>.</p>
-<p>However, as opposed to the description in RFC 5869, this implementation
-doesn&#8217;t support SHA1.</p>
-<p>Example:</p>
+<p>Deriva uma chave de outra, presumivelmente mais fraca.</p>
+<p>Este método é usado internamente para derivar uma criptografia e uma chave HMAC da sua configuração em <em>encryption_key</em>.</p>
+<p>Está disponível publicamente devido ao seu propósito geral. É descrito em <a class="reference external" href="https://tools.ietf.org/rfc/rfc5869.txt">RFC 5869</a>.</p>
+<p>No entanto, ao contrário da descrição no RFC 5869, esta implementação não suporta SHA1.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$hmac_key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">hkdf</span><span class="p">(</span>
         <span class="nv">$key</span><span class="p">,</span>
         <span class="s1">&#39;sha512&#39;</span><span class="p">,</span>
