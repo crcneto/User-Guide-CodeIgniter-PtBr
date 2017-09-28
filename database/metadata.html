@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Database Metadata &mdash; Documentação do CodeIgniter 3.1.0</title>
+  <title>Metadados de Banco de Dados &mdash; Documentação do CodeIgniter 3.1.0</title>
 
 
 
@@ -411,7 +411,7 @@
 
         <li><a href="index.html">Referência de Banco de Dados</a> &raquo;</li>
 
-    <li>Database Metadata</li>
+    <li>Metadados de Banco de Dados</li>
     <li class="wy-breadcrumbs-aside">
 
     </li>
@@ -424,15 +424,14 @@
           <div role="main" class="document">
 
   <div class="section" id="database-metadata">
-<h1>Database Metadata<a class="headerlink" href="#database-metadata" title="Permalink to this headline">¶</a></h1>
+<h1>Metadados de Banco de Dados<a class="headerlink" href="#database-metadata" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="table-metadata">
-<h2>Table MetaData<a class="headerlink" href="#table-metadata" title="Permalink to this headline">¶</a></h2>
-<p>These functions let you fetch table information.</p>
+<h2>Metadados da Tabela<a class="headerlink" href="#table-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Essas funções permitem que você obtenha informações da tabela.</p>
 <div class="section" id="list-the-tables-in-your-database">
-<h3>List the Tables in Your Database<a class="headerlink" href="#list-the-tables-in-your-database" title="Permalink to this headline">¶</a></h3>
+<h3>Lista as tabelas em seu banco de dados<a class="headerlink" href="#list-the-tables-in-your-database" title="Permalink to this headline">¶</a></h3>
 <p><strong>$this-&gt;db-&gt;list_tables();</strong></p>
-<p>Returns an array containing the names of all the tables in the database
-you are currently connected to. Example:</p>
+<p>Retorna uma array contendo os nomes de todas as tabelas no banco de dados ao qual você está conectado. Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$tables</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">list_tables</span><span class="p">();</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$tables</span> <span class="k">as</span> <span class="nv">$table</span><span class="p">)</span>
@@ -443,32 +442,29 @@ you are currently connected to. Example:</p>
 </div>
 </div>
 <div class="section" id="determine-if-a-table-exists">
-<h3>Determine If a Table Exists<a class="headerlink" href="#determine-if-a-table-exists" title="Permalink to this headline">¶</a></h3>
+<h3>Determine Se Existe uma Tabela<a class="headerlink" href="#determine-if-a-table-exists" title="Permalink to this headline">¶</a></h3>
 <p><strong>$this-&gt;db-&gt;table_exists();</strong></p>
-<p>Sometimes it&#8217;s helpful to know whether a particular table exists before
-running an operation on it. Returns a boolean TRUE/FALSE. Usage example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">table_exists</span><span class="p">(</span><span class="s1">&#39;table_name&#39;</span><span class="p">))</span>
+<p>Às vezes, é útil saber se existe uma tabela específica antes de executar uma operação nela. Retorna um booleano TRUE/FALSE. Exemplo de uso:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">table_exists</span><span class="p">(</span><span class="s1">&#39;nome_da_tabela&#39;</span><span class="p">))</span>
 <span class="p">{</span>
-        <span class="c1">// some code...</span>
+        <span class="c1">// algum código...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Replace <em>table_name</em> with the name of the table you are looking for.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Substitua <em>nome_da_tabela</em> pelo nome da tabela que você está procurando.</p>
 </div>
 </div>
 </div>
 <div class="section" id="field-metadata">
-<h2>Field MetaData<a class="headerlink" href="#field-metadata" title="Permalink to this headline">¶</a></h2>
+<h2>Metadados de Campo<a class="headerlink" href="#field-metadata" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="list-the-fields-in-a-table">
-<h3>List the Fields in a Table<a class="headerlink" href="#list-the-fields-in-a-table" title="Permalink to this headline">¶</a></h3>
+<h3>Listar os Campos em uma Tabela<a class="headerlink" href="#list-the-fields-in-a-table" title="Permalink to this headline">¶</a></h3>
 <p><strong>$this-&gt;db-&gt;list_fields()</strong></p>
-<p>Returns an array containing the field names. This query can be called
-two ways:</p>
-<p>1. You can supply the table name and call it from the $this-&gt;db-&gt;
-object:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">list_fields</span><span class="p">(</span><span class="s1">&#39;table_name&#39;</span><span class="p">);</span>
+<p>Retorna um array contendo os nomes dos campos. Essa consulta pode ser chamada de duas maneiras:</p>
+<p>1. Você pode fornecer o nome da tabela e chamar o $this-&gt;db-&gt; object:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">list_fields</span><span class="p">(</span><span class="s1">&#39;nome_da_tabela&#39;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$fields</span> <span class="k">as</span> <span class="nv">$field</span><span class="p">)</span>
 <span class="p">{</span>
@@ -476,9 +472,8 @@ object:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>2. You can gather the field names associated with any query you run by
-calling the function from your query result object:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM some_table&#39;</span><span class="p">);</span>
+<p>2. Você pode reunir os nomes dos campos associados a qualquer consulta que você executa chamando a função do objeto de resultado da consulta:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM alguma_tabela&#39;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">list_fields</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$field</span><span class="p">)</span>
 <span class="p">{</span>
@@ -488,35 +483,31 @@ calling the function from your query result object:</p>
 </div>
 </div>
 <div class="section" id="determine-if-a-field-is-present-in-a-table">
-<h3>Determine If a Field is Present in a Table<a class="headerlink" href="#determine-if-a-field-is-present-in-a-table" title="Permalink to this headline">¶</a></h3>
+<h3>Determine Se um Campo está Presente em uma Tabela<a class="headerlink" href="#determine-if-a-field-is-present-in-a-table" title="Permalink to this headline">¶</a></h3>
 <p><strong>$this-&gt;db-&gt;field_exists()</strong></p>
-<p>Sometimes it&#8217;s helpful to know whether a particular field exists before
-performing an action. Returns a boolean TRUE/FALSE. Usage example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">field_exists</span><span class="p">(</span><span class="s1">&#39;field_name&#39;</span><span class="p">,</span> <span class="s1">&#39;table_name&#39;</span><span class="p">))</span>
+<p>Às vezes, é útil saber se existe um campo específico antes de realizar uma ação. Retorna um booleano TRUE/FALSE. Exemplo de uso:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">field_exists</span><span class="p">(</span><span class="s1">&#39;nome_da_coluna&#39;</span><span class="p">,</span> <span class="s1">&#39;nome_da_tabela&#39;</span><span class="p">))</span>
 <span class="p">{</span>
-        <span class="c1">// some code...</span>
+        <span class="c1">// algum código...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Replace <em>field_name</em> with the name of the column you are looking
-for, and replace <em>table_name</em> with the name of the table you are
-looking for.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Substitua <em>nome_da_coluna</em> com o nome da coluna que você está procurando e substitua <em>nome_da_tabela</em> pelo nome da tabela que você está procurando.</p>
 </div>
 </div>
 <div class="section" id="retrieve-field-metadata">
-<h3>Retrieve Field Metadata<a class="headerlink" href="#retrieve-field-metadata" title="Permalink to this headline">¶</a></h3>
+<h3>Recuperar Metadados de Campo<a class="headerlink" href="#retrieve-field-metadata" title="Permalink to this headline">¶</a></h3>
 <p><strong>$this-&gt;db-&gt;field_data()</strong></p>
-<p>Returns an array of objects containing field information.</p>
-<p>Sometimes it&#8217;s helpful to gather the field names or other metadata, like
-the column type, max length, etc.</p>
+<p>Retorna um array de objetos contendo informações do campo.</p>
+<p>Às vezes, é útil coletar os nomes dos campos ou outros metadados, como o tipo de coluna, o comprimento máximo, etc.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Not all databases provide meta-data.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Nem todos os bancos de dados fornecem metadados.</p>
 </div>
-<p>Usage example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">field_data</span><span class="p">(</span><span class="s1">&#39;table_name&#39;</span><span class="p">);</span>
+<p>Exemplo de uso:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">field_data</span><span class="p">(</span><span class="s1">&#39;nome_da_tabela&#39;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$fields</span> <span class="k">as</span> <span class="nv">$field</span><span class="p">)</span>
 <span class="p">{</span>
@@ -527,19 +518,17 @@ the column type, max length, etc.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you have run a query already you can use the result object instead of
-supplying the table name:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Se você já executou uma consulta, você pode usar o objeto de resultado em vez de fornecer o nome da tabela:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 <span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">field_data</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>The following data is available from this function if supported by your
-database:</p>
+<p>Os seguintes dados estão disponíveis para esta função, se suportados pelo seu banco de dados:</p>
 <ul class="simple">
-<li>name - column name</li>
-<li>max_length - maximum length of the column</li>
-<li>primary_key - 1 if the column is a primary key</li>
-<li>type - the type of the column</li>
+<li>name - nome da coluna</li>
+<li>max_length - tamanho máximo da coluna</li>
+<li>primary_key - 1 se a coluna é uma chave primária</li>
+<li>type - o tipo da coluna</li>
 </ul>
 </div>
 </div>
