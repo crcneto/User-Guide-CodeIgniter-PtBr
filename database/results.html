@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -32,8 +30,8 @@
 
     <link rel="top" title="Documentação do CodeIgniter 3.1.0" href="../index.html"/>
         <link rel="up" title="Referência de Banco de Dados" href="index.html"/>
-        <link rel="next" title="Query Helper Methods" href="helpers.html"/>
-        <link rel="prev" title="Queries" href="queries.html"/>
+        <link rel="next" title="Funções Auxiliares para Consultas" href="helpers.html"/>
+        <link rel="prev" title="Consultas" href="queries.html"/>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -425,49 +423,45 @@
 
   <div class="section" id="generating-query-results">
 <h1>Gerando Resultados de Consulta<a class="headerlink" href="#generating-query-results" title="Permalink to this headline">¶</a></h1>
-<p>There are several ways to generate query results:</p>
+<p>Existem várias maneiras de se gerar resultados de consultas:</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#result-arrays" id="id1">Result Arrays</a></li>
-<li><a class="reference internal" href="#result-rows" id="id2">Result Rows</a></li>
-<li><a class="reference internal" href="#custom-result-objects" id="id3">Custom Result Objects</a></li>
-<li><a class="reference internal" href="#result-helper-methods" id="id4">Result Helper Methods</a></li>
-<li><a class="reference internal" href="#class-reference" id="id5">Class Reference</a></li>
+<li><a class="reference internal" href="#result-arrays" id="id1">Vários Resultados em um Array</a></li>
+<li><a class="reference internal" href="#result-rows" id="id2">Resultado Único</a></li>
+<li><a class="reference internal" href="#custom-result-objects" id="id3">Resultados Personalizados como Objetos</a></li>
+<li><a class="reference internal" href="#result-helper-methods" id="id4">Funções Auxiliares de Resultados</a></li>
+<li><a class="reference internal" href="#class-reference" id="id5">Referência da Classe</a></li>
 </ul>
 </div>
 <div class="section" id="result-arrays">
-<h2><a class="toc-backref" href="#id1">Result Arrays</a><a class="headerlink" href="#result-arrays" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">Vários Resultados em um Array</a><a class="headerlink" href="#result-arrays" title="Permalink to this headline">¶</a></h2>
 <p><strong>result()</strong></p>
-<p>This method returns the query result as an array of <strong>objects</strong>, or
-<strong>an empty array</strong> on failure. Typically you&#8217;ll use this in a foreach
-loop, like this:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
-
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
-<span class="p">{</span>
-        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
-<span class="p">}</span>
+<p>Este método retorna o resultado da consulta como um array de <strong>objetos</strong>, ou
+<strong>um array vazio</strong> em caso de falha. Normalmente você vai usar este método em uma iteração com foreach, como esta:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
+  
+  <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
+  <span class="p">{</span>
+          <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+          <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+          <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+  <span class="p">}</span>
 </pre></div>
 </div>
-<p>The above method is an alias of <tt class="docutils literal"><span class="pre">result_object()</span></tt>.</p>
-<p>You can also pass a string to <tt class="docutils literal"><span class="pre">result()</span></tt> which represents a class to
-instantiate for each result object (note: this class must be loaded)</p>
+<p>O método acima é um atalho para <tt class="docutils literal"><span class="pre">result_object()</span></tt>.</p>
+<p>Você também pode passar uma string para <tt class="docutils literal"><span class="pre">result()</span></tt> informando a classe a ser instanciada para o objeto resultante do for each (observação: esta classe deve estar carregada)</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users;&quot;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="c1">// access attributes</span>
-        <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">reverse_name</span><span class="p">();</span> <span class="c1">// or methods defined on the &#39;User&#39; class</span>
+        <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="c1">// acessar atributos</span>
+        <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">reverse_name</span><span class="p">();</span> <span class="c1">// ou métodos definidos na classe &#39;User&#39;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>result_array()</strong></p>
-<p>This method returns the query result as a pure array, or an empty
-array when no result is produced. Typically you&#8217;ll use this in a foreach
-loop, like this:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Este método retorna como resultado da consulta um array puro, ou um array vazio quando nenhum resultado é encontrado. Normalmente você vai usar isto em uma iteração através do foreach, como esta:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result_array</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
 <span class="p">{</span>
@@ -479,12 +473,10 @@ loop, like this:</p>
 </div>
 </div>
 <div class="section" id="result-rows">
-<h2><a class="toc-backref" href="#id2">Result Rows</a><a class="headerlink" href="#result-rows" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Resultado Único</a><a class="headerlink" href="#result-rows" title="Permalink to this headline">¶</a></h2>
 <p><strong>row()</strong></p>
-<p>This method returns a single result row. If your query has more than
-one row, it returns only the first row. The result is returned as an
-<strong>object</strong>. Here&#8217;s a usage example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Este método retorna uma linha em um único resultado. Se sua consulta tiver mais que um resultado, irá retornar a primeira linha. O resultado é retornado como um <strong>objeto</strong>. Aqui está um exemplo de uso:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 
 <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">();</span>
 
@@ -496,24 +488,21 @@ one row, it returns only the first row. The result is returned as an
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you want a specific row returned you can submit the row number as a
-digit in the first parameter:</p>
+<p>Se você quer uma linha específica retornada, você pode informar o número da linha como um digito no primeiro parâmetro:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>You can also add a second String parameter, which is the name of a class
-to instantiate the row with:</p>
+<p>Você também pode adicionar uma String como segundo parâmetro, que é  o nome da classe em que a linha deverá ser instanciada:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users LIMIT 1;&quot;</span><span class="p">);</span>
 <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">);</span>
 
 <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="c1">// access attributes</span>
-<span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">reverse_name</span><span class="p">();</span> <span class="c1">// or methods defined on the &#39;User&#39; class</span>
+<span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">reverse_name</span><span class="p">();</span> <span class="c1">// ou métoos definidos para a classe &#39;User&#39;</span>
 </pre></div>
 </div>
 <p><strong>row_array()</strong></p>
-<p>Identical to the above <tt class="docutils literal"><span class="pre">row()</span></tt> method, except it returns an array.
-Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Idêntico ao método <tt class="docutils literal"><span class="pre">row()</span></tt> acima, exceto que o resultado é retornado como um array. Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 
 <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row_array</span><span class="p">();</span>
 
@@ -525,23 +514,20 @@ Example:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you want a specific row returned you can submit the row number as a
-digit in the first parameter:</p>
+<p>Se você quer uma linha específica retornada, você pode informar o número da linha como um  dígito no primeiro parâmetro:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">row_array</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In addition, you can walk forward/backwards/first/last through your
-results using these variations:</p>
+<p>Além disso,  você pode navegar (para frente/para trás/primeiro/último) nos seus resultados utilizando estas variações:</p>
 <blockquote>
 <div><div class="line-block">
-<div class="line"><strong>$row = $query-&gt;first_row()</strong></div>
-<div class="line"><strong>$row = $query-&gt;last_row()</strong></div>
-<div class="line"><strong>$row = $query-&gt;next_row()</strong></div>
-<div class="line"><strong>$row = $query-&gt;previous_row()</strong></div>
+<div class="line"><strong>$row = $query-&gt;first_row()</strong> // primeira linha</div>
+<div class="line"><strong>$row = $query-&gt;last_row()</strong> // última linha</div>
+<div class="line"><strong>$row = $query-&gt;next_row()</strong> // próxima linha</div>
+<div class="line"><strong>$row = $query-&gt;previous_row()</strong> // linha anterior</div>
 </div>
 </div></blockquote>
-<p>By default they return an object unless you put the word &#8220;array&#8221; in the
-parameter:</p>
+<p>Por padrão retorna um objeto a menos que você informa a palavra &#8220;array&#8221; no parâmetro:</p>
 <blockquote>
 <div><div class="line-block">
 <div class="line"><strong>$row = $query-&gt;first_row(&#8216;array&#8217;)</strong></div>
@@ -551,16 +537,13 @@ parameter:</p>
 </div>
 </div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the methods above will load the whole result into memory
-(prefetching). Use <tt class="docutils literal"><span class="pre">unbuffered_row()</span></tt> for processing large
-result sets.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Todos os métodos acima vão carregar todos os resultados na memória
+(pré-processamento). Use <tt class="docutils literal"><span class="pre">unbuffered_row()</span></tt> para processamento de grandes quantidades de registros.</p>
 </div>
 <p><strong>unbuffered_row()</strong></p>
-<p>This method returns a single result row without prefetching the whole
-result in memory as <tt class="docutils literal"><span class="pre">row()</span></tt> does. If your query has more than one row,
-it returns the current row and moves the internal data pointer ahead.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Este método retorna uma única linha como resultado, sem pré-processar todo resultado na memória como o método <tt class="docutils literal"><span class="pre">row()</span></tt> faz. Se sua query tem mais do que uma linha de resultado, irá retornar a linha atual e mover o ponteiro interno de dados para frente.</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 
 <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">())</span>
 <span class="p">{</span>
@@ -570,23 +553,20 @@ it returns the current row and moves the internal data pointer ahead.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can optionally pass &#8216;object&#8217; (default) or &#8216;array&#8217; in order to specify
-the returned value&#8217;s type:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">();</span>               <span class="c1">// object</span>
-<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">);</span>       <span class="c1">// object</span>
-<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">);</span>        <span class="c1">// associative array</span>
+<p>Você pode opcionalmente passar &#8216;object&#8217; (padrão) ou &#8216;array&#8217; na ordem para especificar o tipo do valor retornado:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">();</span>               <span class="c1">// objeto</span>
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">);</span>       <span class="c1">// objeto</span>
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">);</span>        <span class="c1">// array associativo</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="custom-result-objects">
-<h2><a class="toc-backref" href="#id3">Custom Result Objects</a><a class="headerlink" href="#custom-result-objects" title="Permalink to this headline">¶</a></h2>
-<p>You can have the results returned as an instance of a custom class instead
-of a <tt class="docutils literal"><span class="pre">stdClass</span></tt> or array, as the <tt class="docutils literal"><span class="pre">result()</span></tt> and <tt class="docutils literal"><span class="pre">result_array()</span></tt>
-methods allow. This requires that the class is already loaded into memory.
-The object will have all values returned from the database set as properties.
-If these have been declared and are non-public then you should provide a
-<tt class="docutils literal"><span class="pre">__set()</span></tt> method to allow them to be set.</p>
-<p>Example:</p>
+<h2><a class="toc-backref" href="#id3">Resultado Como Objetos Personalizados</a><a class="headerlink" href="#custom-result-objects" title="Permalink to this headline">¶</a></h2>
+<p>Você pode ter os resultados retornados como um instância de uma classe ao invés de uma <tt class="docutils literal"><span class="pre">stdClass</span></tt> ou array, como os métodos <tt class="docutils literal"><span class="pre">result()</span></tt> e <tt class="docutils literal"><span class="pre">result_array()</span></tt>
+permitem. Isto requer que a classe já esteja carregada na memória.
+O objeto vai ter todos os valores retornados do banco de dados definidos como propriedades.
+Se eles já foram declarados e não são públicos, então você deve providenciar um método <tt class="docutils literal"><span class="pre">__set()</span></tt> para permitir que eles sejam definidos.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
 
         <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
@@ -618,14 +598,14 @@ If these have been declared and are non-public then you should provide a
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In addition to the two methods listed below, the following methods also can
-take a class name to return the results as: <tt class="docutils literal"><span class="pre">first_row()</span></tt>, <tt class="docutils literal"><span class="pre">last_row()</span></tt>,
-<tt class="docutils literal"><span class="pre">next_row()</span></tt>, and <tt class="docutils literal"><span class="pre">previous_row()</span></tt>.</p>
+<p>Além dos dois métodos listados acima, os seguintes métodos também podem
+  ter um nome de classe para retornar o resultado como: <tt class="docutils literal"><span class="pre">first_row()</span></tt>, <tt class="docutils literal"><span class="pre">last_row()</span></tt>,
+<tt class="docutils literal"><span class="pre">next_row()</span></tt>, e <tt class="docutils literal"><span class="pre">previous_row()</span></tt>.</p>
 <p><strong>custom_result_object()</strong></p>
-<p>Returns the entire result set as an array of instances of the class requested.
-The only parameter is the name of the class to instantiate.</p>
-<p>Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Retorna todos os resultados como um array de instâncias de uma classe requerida.
+O único parâmetro é o nome da classe a ser instanciada.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 
 <span class="nv">$rows</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">custom_result_object</span><span class="p">(</span><span class="s1">&#39;User&#39;</span><span class="p">);</span>
 
@@ -638,10 +618,10 @@ The only parameter is the name of the class to instantiate.</p>
 </pre></div>
 </div>
 <p><strong>custom_row_object()</strong></p>
-<p>Returns a single row from your query results. The first parameter is the row
-number of the results. The second parameter is the class name to instantiate.</p>
-<p>Example:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;YOUR QUERY&quot;</span><span class="p">);</span>
+<p>Retorna um único registro dos resultados de sua consulta/query.O primeiro parâmetro é o número da linha
+do resultado. O segundo parâmetro é o nome da classe a ser instanciada.</p>
+<p>Exemplo:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SUA CONSULTA&quot;</span><span class="p">);</span>
 
 <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">custom_row_object</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">);</span>
 
@@ -652,44 +632,44 @@ number of the results. The second parameter is the class name to instantiate.</p
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can also use the <tt class="docutils literal"><span class="pre">row()</span></tt> method in exactly the same way.</p>
-<p>Example:</p>
+<p>Você também pode usar o método<tt class="docutils literal"><span class="pre">row()</span></tt> exatamente do mesmo jeito.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">custom_row_object</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="result-helper-methods">
-<h2><a class="toc-backref" href="#id4">Result Helper Methods</a><a class="headerlink" href="#result-helper-methods" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Funções Auxiliares de Resultados</a><a class="headerlink" href="#result-helper-methods" title="Permalink to this headline">¶</a></h2>
 <p><strong>num_rows()</strong></p>
-<p>The number of rows returned by the query. Note: In this example, $query
-is the variable that the query result object is assigned to:</p>
+<p>O número de linhas retornado pela consulta/query. Nota: Nestte exemplo, $query 
+é a variável ao qual o resultado da consulta está associado:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM my_table&#39;</span><span class="p">);</span>
 
 <span class="k">echo</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">num_rows</span><span class="p">();</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Not all database drivers have a native way of getting the total
-number of rows for a result set. When this is the case, all of
-the data is prefetched and <tt class="docutils literal"><span class="pre">count()</span></tt> is manually called on the
-resulting array in order to achieve the same result.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Nem todos os drivers de banco possuem uma forma nativa de se obter o número
+  total de linhas de um conjunto de resultados. Quando este é o caso, todos 
+  os dados são pré-processados e o método <tt class="docutils literal"><span class="pre">count()</span></tt> é manualmente chamado no 
+  array resultante em ordem para alcançar o mesmo resultado.</p>
 </div>
 <p><strong>num_fields()</strong></p>
-<p>The number of FIELDS (columns) returned by the query. Make sure to call
-the method using your query result object:</p>
+<p>O número de CAMPOS (colunas) retornado pela consulta/query. Tenha certeza de chamar
+  o método usando o objeto resultante de sua consulta:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM my_table&#39;</span><span class="p">);</span>
 
 <span class="k">echo</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">num_fields</span><span class="p">();</span>
 </pre></div>
 </div>
 <p><strong>free_result()</strong></p>
-<p>It frees the memory associated with the result and deletes the result
-resource ID. Normally PHP frees its memory automatically at the end of
-script execution. However, if you are running a lot of queries in a
-particular script you might want to free the result after each query
-result has been generated in order to cut down on memory consumption.</p>
-<p>Example:</p>
+<p>Libera a memória associada com o resultado e deleta o ID do recurso resultante.
+  Normalmente o PHP libera sua memória automaticamente no fim da execução do script.
+  Todavia, se você está executando um conjunto de consultas/queries em um script particular
+  você deve querer liberar o resultado depois de cada resultado de consulta ter sido gerado
+  em ordem para cortar o consumo de memória.</p>
+<p>Exemplo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT title FROM my_table&#39;</span><span class="p">);</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">result</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span>
@@ -697,36 +677,35 @@ result has been generated in order to cut down on memory consumption.</p>
         <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">free_result</span><span class="p">();</span>  <span class="c1">// The $query result object will no longer be available</span>
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">free_result</span><span class="p">();</span>  <span class="c1">// O objeto resultado $query  não estará mais disponível</span>
 
 <span class="nv">$query2</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT name FROM some_table&#39;</span><span class="p">);</span>
 
 <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query2</span><span class="o">-&gt;</span><span class="na">row</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-<span class="nv">$query2</span><span class="o">-&gt;</span><span class="na">free_result</span><span class="p">();</span> <span class="c1">// The $query2 result object will no longer be available</span>
+<span class="nv">$query2</span><span class="o">-&gt;</span><span class="na">free_result</span><span class="p">();</span> <span class="c1">// O objeto resultado $query2  não estará mais disponível</span>
 </pre></div>
 </div>
 <p><strong>data_seek()</strong></p>
-<p>This method sets the internal pointer for the next result row to be
-fetched. It is only useful in combination with <tt class="docutils literal"><span class="pre">unbuffered_row()</span></tt>.</p>
-<p>It accepts a positive integer value, which defaults to 0 and returns
-TRUE on success or FALSE on failure.</p>
+<p>Este método define o ponteiro interno para a próxima linha para ser
+buscado. Ele só é útil em combinação com <tt class="docutils literal"><span class="pre">unbuffered_row()</span></tt>.</p>
+<p>Ele aceita um valor inteiro positivo, cujo padrão é 0 e retorna TRUE em caso de sucesso ou FALSO em caso de falha.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT `field_name` FROM `table_name`&#39;</span><span class="p">);</span>
 <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">data_seek</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// Skip the first 5 rows</span>
 <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">unbuffered_row</span><span class="p">();</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Not all database drivers support this feature and will return FALSE.
-Most notably - you won&#8217;t be able to use it with PDO.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Nem todos os drivers de banco de dados suportam este recurso e vão retornar FALSE.
+Mais notavelmente - você não estaá permitido usar isto com PDO.</p>
 </div>
 </div>
 <div class="section" id="class-reference">
-<h2><a class="toc-backref" href="#id5">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Referência da Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_DB_result">
-<em class="property">class </em><tt class="descname">CI_DB_result</tt><a class="headerlink" href="#CI_DB_result" title="Permalink to this definition">¶</a></dt>
+<em class="property">classe </em><tt class="descname">CI_DB_result</tt><a class="headerlink" href="#CI_DB_result" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_DB_result::result">
 <tt class="descname">result</tt><big>(</big><span class="optional">[</span><em>$type = 'object'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_result::result" title="Permalink to this definition">¶</a></dt>
@@ -735,11 +714,11 @@ Most notably - you won&#8217;t be able to use it with PDO.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$type</strong> (<em>string</em>) &#8211; Type of requested results - array, object, or class name</li>
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo dos resultados requesitados - array, object, ou nome da classe</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Array containing the fetched rows</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Array contendo as linhas buscadas</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
@@ -747,9 +726,9 @@ Most notably - you won&#8217;t be able to use it with PDO.</p>
 </tr>
 </tbody>
 </table>
-<p>A wrapper for the <tt class="docutils literal"><span class="pre">result_array()</span></tt>, <tt class="docutils literal"><span class="pre">result_object()</span></tt>
-and <tt class="docutils literal"><span class="pre">custom_result_object()</span></tt> methods.</p>
-<p>Usage: see <a class="reference internal" href="#result-arrays">Result Arrays</a>.</p>
+<p>Um empacotador para os métodos <tt class="docutils literal"><span class="pre">result_array()</span></tt>, <tt class="docutils literal"><span class="pre">result_object()</span></tt>
+e <tt class="docutils literal"><span class="pre">custom_result_object()</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-arrays">Arrays de resultados</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -759,15 +738,14 @@ and <tt class="docutils literal"><span class="pre">custom_result_object()</span>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array containing the fetched rows</td>
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array contendo as linhas buscadas</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">array</td>
 </tr>
 </tbody>
 </table>
-<p>Returns the query results as an array of rows, where each
-row is itself an associative array.</p>
-<p>Usage: see <a class="reference internal" href="#result-arrays">Result Arrays</a>.</p>
+<p>Retorna os resultados da query como um array de linhas, onde cada linha é em si um array associativo.</p>
+<p>Uso: veja <a class="reference internal" href="#result-arrays">Arraysde Resultados</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -777,15 +755,14 @@ row is itself an associative array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array containing the fetched rows</td>
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Array contendo as linhas buscadas</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">array</td>
 </tr>
 </tbody>
 </table>
-<p>Returns the query results as an array of rows, where each
-row is an object of type <tt class="docutils literal"><span class="pre">stdClass</span></tt>.</p>
-<p>Usage: see <a class="reference internal" href="#result-arrays">Result Arrays</a>.</p>
+<p>Retorna os resultados da query como um array de linhas, onde cada linha é um objeto do tipo <tt class="docutils literal"><span class="pre">stdClass</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-arrays">Arrays de Resultados</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -796,11 +773,11 @@ row is an object of type <tt class="docutils literal"><span class="pre">stdClass
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$class_name</strong> (<em>string</em>) &#8211; Class name for the resulting rows</li>
+<li><strong>$class_name</strong> (<em>string</em>) &#8211; Nome da classe para as linhas resultantes</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Array containing the fetched rows</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Array contendo as linhas buscadas</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
@@ -808,8 +785,7 @@ row is an object of type <tt class="docutils literal"><span class="pre">stdClass
 </tr>
 </tbody>
 </table>
-<p>Returns the query results as an array of rows, where each
-row is an instance of the specified class.</p>
+<p>Retorna a query resultante como um array de linhas, onde cada linha é uma instância da classe especificada.</p>
 </dd></dl>
 
 <dl class="method">
@@ -820,22 +796,22 @@ row is an instance of the specified class.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$n</strong> (<em>int</em>) &#8211; Index of the query results row to be returned</li>
-<li><strong>$type</strong> (<em>string</em>) &#8211; Type of the requested result - array, object, or class name</li>
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha dos resultados da query que deve ser retornada</li>
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo do resultado requisitado - array, object, ou nome da classe</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">The requested row or NULL if it doesn&#8217;t exist</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se ela não existir</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">mixed</p>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>A wrapper for the <tt class="docutils literal"><span class="pre">row_array()</span></tt>, <tt class="docutils literal"><span class="pre">row_object()</span> <span class="pre">and</span>
-<span class="pre">``custom_row_object()</span></tt> methods.</p>
-<p>Usage: see <a class="reference internal" href="#result-rows">Result Rows</a>.</p>
+<p>Um empacotador para os métodos <tt class="docutils literal"><span class="pre">row_array()</span></tt>, <tt class="docutils literal"><span class="pre">row_object()</span> <span class="pre">e</span>
+<span class="pre">``custom_row_object()</span></tt>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -846,21 +822,20 @@ row is an instance of the specified class.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$type</strong> (<em>string</em>) &#8211; Type of the requested result - array, object, or class name</li>
+<li><strong>$type</strong> (<em>string</em>) &#8211; Tipo do resultado requesitado - array, object, e class name</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Próximo row from the result set or NULL if it doesn&#8217;t exist</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Próxima linha do conjunto de resultados ou NULL se não houver resultados</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">mixed</p>
+<tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">misto</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Fetches the next result row and returns it in the
-requested form.</p>
-<p>Usage: see <a class="reference internal" href="#result-rows">Result Rows</a>.</p>
+<p>Busca a próxima linha do resultado e a retorna no formato requisitado.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas ResultantesResult Rows</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -871,11 +846,11 @@ requested form.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$n</strong> (<em>int</em>) &#8211; Index of the query results row to be returned</li>
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha a ser retornada dos resultados da query</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">The requested row or NULL if it doesn&#8217;t exist</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se nenhuma linha for encontrada</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">array</p>
@@ -883,8 +858,8 @@ requested form.</p>
 </tr>
 </tbody>
 </table>
-<p>Returns the requested result row as an associative array.</p>
-<p>Usage: see <a class="reference internal" href="#result-rows">Result Rows</a>.</p>
+<p>Retorna o resultado da linha requisitada como um array associativo.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -895,11 +870,11 @@ requested form.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$n</strong> (<em>int</em>) &#8211; Index of the query results row to be returned</li>
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha a ser retornada dos resultados da query</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">The requested row or NULL if it doesn&#8217;t exist</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se não existir</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">stdClass</p>
@@ -907,9 +882,9 @@ requested form.</p>
 </tr>
 </tbody>
 </table>
-<p>Returns the requested result row as an object of type
+<p>Retorna a linha do resultado requisitado como um objeto do tipo
 <tt class="docutils literal"><span class="pre">stdClass</span></tt>.</p>
-<p>Usage: see <a class="reference internal" href="#result-rows">Result Rows</a>.</p>
+<p>Uso: veja <a class="reference internal" href="#result-rows">Linhas Resultantes</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -920,12 +895,12 @@ requested form.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$n</strong> (<em>int</em>) &#8211; Index of the results row to return</li>
-<li><strong>$class_name</strong> (<em>string</em>) &#8211; Class name for the resulting row</li>
+<li><strong>$n</strong> (<em>int</em>) &#8211; Índice da linha a ser retornado dos resultados</li>
+<li><strong>$class_name</strong> (<em>string</em>) &#8211; Nome da classe para a linha resultante</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">The requested row or NULL if it doesn&#8217;t exist</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">A linha requisitada ou NULL se não existir</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">$type</p>
@@ -933,8 +908,7 @@ requested form.</p>
 </tr>
 </tbody>
 </table>
-<p>Returns the requested result row as an instance of the
-requested class.</p>
+<p>Retorna a linha requisitada do resultado como uma instância da classe requisitada.</p>
 </dd></dl>
 
 <dl class="method">
