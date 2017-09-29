@@ -529,27 +529,19 @@ opções de string de consulta) serão ignorados. Definindo esta configuração 
 serão adicionados strings de busca existentes novamente à URL depois do segmento de URI e antes do sufixo:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">page</span><span class="o">/</span><span class="mi">20</span><span class="o">?</span><span class="nx">query</span><span class="o">=</span><span class="nx">search</span><span class="o">%</span><span class="nx">term</span>
 </pre></div>
-  
-  <!--ok-->
-  
 </div>
 <p>Isto ajuda a juntar o <a class="reference internal" href="../general/urls.html"><em>URI Segments</em></a>
 normal assim como argumentos de requisição (parâmetros de consulta), que até a versão 3.0 no era possível.</p>
 <p><strong>$config[&#8216;prefix&#8217;] = &#8216;&#8217;;</strong></p>
 <p>Um prefixo personalizado ao caminho (path). O valor do prefixo estará antes do segmento offset.</p>
 <p><strong>$config[&#8216;suffix&#8217;] = &#8216;&#8217;;</strong></p>
-  
-<!--Ok-->
-  
+
 <p>Um sufixo adicionado ao path (endereço). O valor do sufixo estará depois do segmento <i>offset</i>.</p>
 <p><strong>$config[&#8216;use_global_url_suffix&#8217;] = FALSE;</strong></p>
 <p>Quando definido como TRUE, Será<strong>sobreposto</strong> o valor de <tt class="docutils literal"><span class="pre">$config['suffix']</span></tt> e
 em vez de definir com o que está em <tt class="docutils literal"><span class="pre">$config['url_suffix']</span></tt> no
 seu arquivo <strong>application/config/config.php</strong>.</p>
 </div>
-    
-<!--Ok-->
-    
 <div class="section" id="adding-enclosing-markup">
 <h2><a class="toc-backref" href="#id5">Adicionando Marcações (tag html) </a><a class="headerlink" href="#adding-enclosing-markup" title="Permalink to this headline">¶</a></h2>
 <p>Se você gostaria de cercar a paginação com algumas marcações (tags html), você pode fazê-lo com estas duas preferências:</p>
@@ -558,9 +550,6 @@ seu arquivo <strong>application/config/config.php</strong>.</p>
 <p><strong>$config[&#8216;full_tag_close&#8217;] = &#8216;&lt;/p&gt;&#8217;;</strong></p>
 <p>A tag de fechamento localizada no lado esquerdo do resultado total.</p>
 </div>
-    
-<!--Ok-->
-    
 <div class="section" id="customizing-the-first-link">
 <h2><a class="toc-backref" href="#id6">Personalizando o Primeiro Link </a><a class="headerlink" href="#customizing-the-first-link" title="Permalink to this headline">¶</a></h2>
 <p><strong>$config[&#8216;first_link&#8217;] = &#8216;First&#8217;;</strong></p>
@@ -569,9 +558,6 @@ seu arquivo <strong>application/config/config.php</strong>.</p>
 <p class="first admonition-title">Nota</p>
 <p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
 </div>
- 
-<!--Ok-->
-  
 <p><strong>$config[&#8216;first_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
 <p>A tag de abertura para o &#8220;primeiro&#8221; link.</p>
 <p><strong>$config[&#8216;first_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
@@ -579,105 +565,95 @@ seu arquivo <strong>application/config/config.php</strong>.</p>
 <p><strong>$config[&#8216;first_url&#8217;] = &#8216;&#8217;;</strong></p>
 <p>Uma URL alternativa para utilizar para o link de &#8220;primeira página&#8221;.</p>
 </div>
-    
- <!--Ok-->
-    
 <div class="section" id="customizing-the-last-link">
-<h2><a class="toc-backref" href="#id7">Customizing the Last Link</a><a class="headerlink" href="#customizing-the-last-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;last_link&#8217;] = &#8216;Last&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;last&#8221; link on the right. If you do
-not want this link rendered, you can set its value to FALSE.</p>
+<h2><a class="toc-backref" href="#id7">Personalizando o link <strong>Último</strong></a><a class="headerlink" href="#customizing-the-last-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[&#8216;last_link&#8217;] = &#8216;Último&#8217;;</strong></p>
+<p>O texto que será exibido no link &#8220;último&#8221; na direita. Para não ter esse link renderizado, pode ser definido este valor para FALSE.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This value can also be translated via a language file.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
 </div>
-  
-  <!--Ok-->
-  
 <p><strong>$config[&#8216;last_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;last&#8221; link.</p>
+<p>A tag de abertura para o link &#8220;último&#8221;.</p>
 <p><strong>$config[&#8216;last_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;last&#8221; link.</p>
+<p>A tag de fechamento para o link &#8220;último&#8221;.</p>
 </div>
 <div class="section" id="customizing-the-next-link">
-<h2><a class="toc-backref" href="#id8">Customizing the &#8220;Next&#8221; Link</a><a class="headerlink" href="#customizing-the-next-link" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Personalizando o link &#8220;Próximo&#8221;</a><a class="headerlink" href="#customizing-the-next-link" title="Permalink to this headline">¶</a></h2>
 <p><strong>$config[&#8216;next_link&#8217;] = &#8216;&amp;gt;&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;next&#8221; page link. If you do not
-want this link rendered, you can set its value to FALSE.</p>
+<p>O texto que será exibido no link da página &#8220;Próxima&#8221;. Se não quiser que este link seja renderizado, você pode definir este valor para FALSE.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This value can also be translated via a language file.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
 </div>
-  
-  
 <p><strong>$config[&#8216;next_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;next&#8221; link.</p>
+<p>A tag de abertura para o link &#8220;Próximo&#8221;.</p>
 <p><strong>$config[&#8216;next_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;next&#8221; link.</p>
+<p>A tag de fechamento para o link &#8220;Próximo&#8221;.</p>
 </div>
 <div class="section" id="customizing-the-previous-link">
-<h2><a class="toc-backref" href="#id9">Customizing the &#8220;Previous&#8221; Link</a><a class="headerlink" href="#customizing-the-previous-link" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Personalizando o link &#8220;Anterior&#8221;</a><a class="headerlink" href="#customizing-the-previous-link" title="Permalink to this headline">¶</a></h2>
 <p><strong>$config[&#8216;prev_link&#8217;] = &#8216;&amp;lt;&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;previous&#8221; page link. If you do not
-want this link rendered, you can set its value to FALSE.</p>
+<p>O texto que será exibido no link da página &#8220;anterior&#8221;. Se não quiser que este link seja renderizado, 
+você alterar este valor para FALSE.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This value can also be translated via a language file.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Este valor também pode ser traduzido via arquivo de linguagem.</p>
 </div>
 <p><strong>$config[&#8216;prev_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;previous&#8221; link.</p>
+<p>A tag de abertura para o link &#8220;Anterior&#8221;.</p>
 <p><strong>$config[&#8216;prev_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;previous&#8221; link.</p>
+<p>A tag de fechamento para o link &#8220;Anterior&#8221;.</p>
 </div>
 <div class="section" id="customizing-the-current-page-link">
-<h2><a class="toc-backref" href="#id10">Customizing the &#8220;Current Page&#8221; Link</a><a class="headerlink" href="#customizing-the-current-page-link" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Personalizando o link de &#8220;Página Atual&#8221;</a><a class="headerlink" href="#customizing-the-current-page-link" title="Permalink to this headline">¶</a></h2>
 <p><strong>$config[&#8216;cur_tag_open&#8217;] = &#8216;&lt;b&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;current&#8221; link.</p>
+<p>A tag de abertura para o link de página &#8220;atual&#8221;.</p>
 <p><strong>$config[&#8216;cur_tag_close&#8217;] = &#8216;&lt;/b&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;current&#8221; link.</p>
-</div>
+<p>A tag de fechamento para o link de página &#8220;atual&#8221;.</p>
+</div>    
 <div class="section" id="customizing-the-digit-link">
-<h2><a class="toc-backref" href="#id11">Customizing the &#8220;Digit&#8221; Link</a><a class="headerlink" href="#customizing-the-digit-link" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Personalizando o link do &#8220;Digito&#8221;</a><a class="headerlink" href="#customizing-the-digit-link" title="Permalink to this headline">¶</a></h2>
 <p><strong>$config[&#8216;num_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;digit&#8221; link.</p>
+<p>A tag de abertura para o link &#8220;dígito&#8221;.</p>
 <p><strong>$config[&#8216;num_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;digit&#8221; link.</p>
+<p>A tag de fechamento para o link &#8220;digito&#8221;.</p>
 </div>
 <div class="section" id="hiding-the-pages">
-<h2><a class="toc-backref" href="#id12">Hiding the Pages</a><a class="headerlink" href="#hiding-the-pages" title="Permalink to this headline">¶</a></h2>
-<p>If you wanted to not list the specific pages (for example, you only want
-&#8220;next&#8221; and &#8220;previous&#8221; links), you can suppress their rendering by
-adding:</p>
+<h2><a class="toc-backref" href="#id12">Ocultando as Páginas</a><a class="headerlink" href="#hiding-the-pages" title="Permalink to this headline">¶</a></h2>
+<p>Se deseja não listar páginas específicas (por exemplo, se quer somente os links de 
+&#8220;próximo&#8221; e &#8220;anterior&#8221;), você pode suprimir a renderização das páginas adicionando:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;display_pages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
+    
+    <!--OK-->
 <div class="section" id="adding-attributes-to-anchors">
-<h2><a class="toc-backref" href="#id13">Adding attributes to anchors</a><a class="headerlink" href="#adding-attributes-to-anchors" title="Permalink to this headline">¶</a></h2>
-<p>If you want to add an extra attribute to be added to every link rendered
-by the pagination class, you can set them as key/value pairs in the
-&#8220;attributes&#8221; config:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Produces: class=&quot;myclass&quot;</span>
+<h2><a class="toc-backref" href="#id13">Adicionando atributos aos links</a><a class="headerlink" href="#adding-attributes-to-anchors" title="Permalink to this headline">¶</a></h2>
+<p>Se deseja adicionar um atributo extra a cada link renderizado
+pela classe de paginação, você pode defini-los como pares de chave/valor na configuração dos 
+&#8220;atributos &#8221;:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Resulta: class=&quot;myclass&quot;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;myclass&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Usage of the old method of setting classes via &#8220;anchor_class&#8221;
-is deprecated.</p>
+<p class="first admonition-title">Nota</p>
+<p class="last">Empredo do método antigo de definir classes via &#8220;anchor_class&#8221;
+está obsoleto.</p>
 </div>
 </div>
 <div class="section" id="disabling-the-rel-attribute">
-<h2><a class="toc-backref" href="#id14">Disabling the &#8220;rel&#8221; attribute</a><a class="headerlink" href="#disabling-the-rel-attribute" title="Permalink to this headline">¶</a></h2>
-<p>By default the rel attribute is dynamically generated and appended to
-the appropriate anchors. If for some reason you want to turn it off,
-you can pass boolean FALSE as a regular attribute</p>
+<h2><a class="toc-backref" href="#id14">Desabilitando o atributo &#8220;rel&#8221;</a><a class="headerlink" href="#disabling-the-rel-attribute" title="Permalink to this headline">¶</a></h2>
+<p>Por padrão, o atributo rel é gerado dinamicamente e anexado aos links apropriados.
+Se por alguma razão você deseja desligar isso, você pode passar FALSE como atributo regular</p>
 <div class="highlight-ci"><div class="highlight"><pre><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;rel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="class-reference">
-<h2><a class="toc-backref" href="#id15">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Referência da Classe</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Pagination">
 <em class="property">class </em><tt class="descname">CI_Pagination</tt><a class="headerlink" href="#CI_Pagination" title="Permalink to this definition">¶</a></dt>
@@ -689,11 +665,11 @@ you can pass boolean FALSE as a regular attribute</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parâmetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>$params</strong> (<em>array</em>) &#8211; Configuration parameters</li>
+<li><strong>$params</strong> (<em>array</em>) &#8211; Parâmetros de Configuração</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">CI_Pagination instance (method chaining)</p>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first">Instância do CI_Pagination (encapsulamento do método)</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Tipo de retorno:</th><td class="field-body"><p class="first last">CI_Pagination</p>
@@ -701,7 +677,7 @@ you can pass boolean FALSE as a regular attribute</p>
 </tr>
 </tbody>
 </table>
-<p>Initializes the Pagination class with your preferred options.</p>
+<p>Inicializa a classe de Paginação com suas opções escolhidas.</p>
 </dd></dl>
 
 <dl class="method">
@@ -711,13 +687,13 @@ you can pass boolean FALSE as a regular attribute</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">HTML-formatted pagination</td>
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">Paginação formatada-HTML</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Tipo de retorno:</th><td class="field-body">string</td>
 </tr>
 </tbody>
 </table>
-<p>Returns a &#8220;pagination&#8221; bar, containing the generated links or an empty string if there&#8217;s just a single page.</p>
+<p>Returna uma barra de &#8220;paginação&#8221;, contendo os links gerados ou uma string vazia se for apenas uma única página.</p>
 </dd></dl>
 
 </dd></dl>
